@@ -540,7 +540,7 @@ a.country-card { text-decoration: none; color: inherit; }
   padding: 28px;
   box-shadow: var(--shadow-sm);
   transition: transform 0.25s, box-shadow 0.25s, border-color 0.2s;
-  cursor: pointer;
+  cursor: default;             /* 클릭 불가능 — 호버 효과만 */
   min-height: 260px;
   display: flex;
   flex-direction: column;

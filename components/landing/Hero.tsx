@@ -17,9 +17,6 @@ export default function Hero() {
           </h1>
           <p className="hero-desc">{t.hero.desc}</p>
           <div className="hero-cta-group">
-            <a href={ctaUrl} target="_blank" rel="noopener noreferrer" className="btn-primary">
-              {t.hero.ctaPrimary}
-            </a>
             <a href="#campaigns" className="btn-secondary">{t.hero.ctaSecondary}</a>
           </div>
           <p className="hero-regions">{t.hero.regions}</p>

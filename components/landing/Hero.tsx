@@ -3,7 +3,7 @@
 import { useT } from '@/lib/i18n/LanguageProvider';
 
 export default function Hero() {
-  const { t, ctaUrl, locale } = useT();
+  const { t, ctaUrl } = useT();
 
   return (
     <section id="hero" className="trv-hero">
@@ -11,9 +11,6 @@ export default function Hero() {
       <div className="hero-glow-left" />
       <div className="hero-inner">
         <div className="hero-left">
-          {locale === 'ko' && (
-            <div className="hero-love-message">💜 김희돈 사랑해</div>
-          )}
           <span className="hero-badge">{t.hero.badge}</span>
           <h1 className="hero-title">
             {t.hero.title1}<br />{t.hero.title2}<br />{t.hero.title3}

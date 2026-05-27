@@ -224,6 +224,19 @@ body {
   color: var(--text-white);
   margin-bottom: 28px;
 }
+.hero-love-message {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 700;
+  color: #FFE4F1;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,182,217,0.4);
+  padding: 6px 14px;
+  border-radius: 999px;
+  margin-bottom: 16px;
+  letter-spacing: 0.3px;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.2);
+}
 .hero-title {
   font-size: 72px;
   font-weight: 800;

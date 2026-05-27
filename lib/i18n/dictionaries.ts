@@ -110,8 +110,8 @@ export const dictionaries: Record<Locale, Dictionary> = {
     nav: { campaigns: 'Campaigns', regions: 'Regions', creators: 'Creators', faq: 'FAQ', cta: 'Start as Influencer' },
     hero: {
       badge: '✈️  Global Creator Platform',
-      title1: 'Travel,', title2: 'create content,', title3: 'grow your reach',
-      desc: 'Trevity connects global brands with influencers through immersive travel campaigns — hotels, spas, restaurants, activities and more.',
+      title1: 'Travel,', title2: 'create content,', title3: 'grow your influence',
+      desc: 'Trevity connects global brands with influencers through inspiring travel experiences — from luxury hotels and spas to trending restaurants and unique activities.',
       ctaPrimary: 'Start as Influencer →', ctaSecondary: 'Explore Campaigns',
       regions: 'Korea · Vietnam · Japan · Thailand · Taiwan · Hong Kong · Singapore',
       scrollHint: 'SCROLL',
@@ -120,19 +120,19 @@ export const dictionaries: Record<Locale, Dictionary> = {
       phoneSec1: '📊 15K followers+', phoneSec2: '🎯 Apply to campaigns',
     },
     what: {
-      label: 'WHAT IS TREVITY', title1: 'Where travel becomes', title2: 'shareable content',
-      desc: 'Trevity links brands and influencers to create new travel experiences. Not just ads — real, experience-based content.',
+      label: 'WHAT IS TREVITY', title1: 'Where travel turns into', title2: 'content worth sharing',
+      desc: 'Trevity brings brands and influencers together through real travel experiences that inspire genuine, engaging content.',
       f1Title: 'Global Campaigns', f1Desc: 'Hotels, spas, restaurants, activities and more across Asia',
       f2Title: 'Content Growth', f2Desc: 'Grow your SNS reach through real brand collaborations',
       f3Title: 'Easy to Join', f3Desc: 'Sign up and apply to campaigns you love in minutes',
       f4Title: 'Experience New Countries', f4Desc: 'Get matched with campaigns across multiple countries',
     },
     regions: {
-      label: 'GLOBAL REGIONS', title1: 'Meet our Asia-wide', title2: 'campaign network',
-      desc: 'Trevity connects brands and influencers across multiple countries.',
+      label: 'GLOBAL REGIONS', title1: 'Explore our Asia-wide', title2: 'campaign network',
+      desc: 'Trevity connects brands and influencers through campaigns across multiple countries in Asia.',
     },
     campaigns: {
-      label: 'CAMPAIGNS', title1: 'Discover a wide range', title2: 'of travel campaigns',
+      label: 'CAMPAIGNS', title1: 'Discover unique', title2: 'travel experiences',
     },
     how: {
       label: 'HOW IT WORKS', title1: 'Simple, fast', title2: 'to get started',
@@ -142,8 +142,8 @@ export const dictionaries: Record<Locale, Dictionary> = {
       s4Title: 'Grow', s4Desc: 'Unlock new brands and bigger opportunities',
     },
     benefits: {
-      label: 'CREATOR BENEFITS', title1: 'Built for creators', title2: 'who travel',
-      desc: 'With Trevity you can grow while you travel.', cta: 'Get Started →',
+      label: 'CREATOR BENEFITS', title1: 'Created for travelers', title2: 'who create',
+      desc: 'Turn every trip into new content and new opportunities with Trevity.', cta: 'Get Started →',
       b1: 'Free experiences', b2: 'Global brand collabs', b3: 'SNS growth',
       b4: 'Travel content', b5: 'New countries', b6: 'Portfolio boost',
     },
@@ -290,8 +290,8 @@ export const dictionaries: Record<Locale, Dictionary> = {
     nav: { campaigns: 'Chiến dịch', regions: 'Quốc gia', creators: 'Creator', faq: 'FAQ', cta: 'Bắt đầu làm Influencer' },
     hero: {
       badge: '✈️  Nền tảng Creator toàn cầu',
-      title1: 'Du lịch,', title2: 'tạo nội dung,', title3: 'phát triển sức ảnh hưởng',
-      desc: 'Trevity kết nối thương hiệu toàn cầu với influencer qua các chiến dịch du lịch — khách sạn, spa, nhà hàng, hoạt động trải nghiệm và nhiều hơn nữa.',
+      title1: 'Du lịch,', title2: 'sáng tạo nội dung,', title3: 'lan toả sức ảnh hưởng',
+      desc: 'Trevity mở ra cầu nối giữa thương hiệu và influencer qua những chiến dịch trải nghiệm đa dạng — khách sạn, spa, nhà hàng, du lịch và nhiều hoạt động đặc biệt khác trên toàn cầu.',
       ctaPrimary: 'Bắt đầu làm Influencer →', ctaSecondary: 'Khám phá chiến dịch',
       regions: 'Hàn Quốc · Việt Nam · Nhật · Thái Lan · Đài Loan · Hong Kong · Singapore',
       scrollHint: 'SCROLL',
@@ -300,12 +300,12 @@ export const dictionaries: Record<Locale, Dictionary> = {
       phoneSec1: '📊 15K followers+', phoneSec2: '🎯 Có thể ứng tuyển',
     },
     what: {
-      label: 'WHAT IS TREVITY', title1: 'Nơi trải nghiệm', title2: 'biến thành nội dung',
-      desc: 'Trevity kết nối thương hiệu và influencer, mang lại trải nghiệm du lịch và cơ hội nội dung mới. Không chỉ là quảng cáo — mà là nội dung dựa trên trải nghiệm thật.',
-      f1Title: 'Chiến dịch toàn cầu', f1Desc: 'Khách sạn, spa, nhà hàng, hoạt động khắp châu Á',
-      f2Title: 'Phát triển nội dung', f2Desc: 'Tăng tầm ảnh hưởng SNS qua hợp tác thương hiệu',
-      f3Title: 'Dễ dàng tham gia', f3Desc: 'Đăng ký và ứng tuyển chiến dịch bạn yêu thích',
-      f4Title: 'Trải nghiệm đa quốc gia', f4Desc: 'Tiếp cận chiến dịch tại nhiều quốc gia',
+      label: 'WHAT IS TREVITY', title1: 'Trải nghiệm thực tế,', title2: 'nội dung chân thật',
+      desc: 'Trevity kết nối thương hiệu và influencer thông qua các trải nghiệm thực tế, nơi mỗi chuyến đi, dịch vụ hay khoảnh khắc đều có thể trở thành nội dung đầy cảm hứng.',
+      f1Title: 'Chiến dịch toàn cầu', f1Desc: 'Khách sạn, spa, nhà hàng và trải nghiệm nổi bật khắp châu Á',
+      f2Title: 'Nâng tầm nội dung', f2Desc: 'Mở rộng sức ảnh hưởng SNS cùng các thương hiệu toàn cầu',
+      f3Title: 'Đăng ký dễ dàng', f3Desc: 'Tham gia chiến dịch nhanh chóng chỉ với vài bước',
+      f4Title: 'Cơ hội đa quốc gia', f4Desc: 'Mở rộng hoạt động influencer trên nhiều thị trường khác nhau',
     },
     regions: {
       label: 'GLOBAL REGIONS', title1: 'Mạng lưới chiến dịch', title2: 'khắp châu Á',
@@ -315,15 +315,15 @@ export const dictionaries: Record<Locale, Dictionary> = {
       label: 'CAMPAIGNS', title1: 'Khám phá nhiều', title2: 'chiến dịch du lịch',
     },
     how: {
-      label: 'HOW IT WORKS', title1: 'Đơn giản, nhanh chóng', title2: 'để bắt đầu',
-      s1Title: 'Đăng ký', s1Desc: 'Tham gia làm Trevity Creator',
-      s2Title: 'Ứng tuyển', s2Desc: 'Ứng tuyển chiến dịch bạn muốn',
-      s3Title: 'Trải nghiệm & tạo', s3Desc: 'Trải nghiệm thương hiệu và tạo nội dung',
-      s4Title: 'Phát triển', s4Desc: 'Mở khóa thương hiệu mới và cơ hội lớn hơn',
+      label: 'HOW IT WORKS', title1: 'Đơn giản, nhanh chóng', title2: 'bắt đầu cùng Trevity',
+      s1Title: 'Đăng ký', s1Desc: 'Trở thành Trevity Creator',
+      s2Title: 'Ứng tuyển', s2Desc: 'Chọn tham gia chiến dịch bạn yêu thích',
+      s3Title: 'Trải nghiệm & sáng tạo', s3Desc: 'Khám phá thương hiệu và tạo nội dung chân thực',
+      s4Title: 'Phát triển', s4Desc: 'Mở rộng cơ hội hợp tác cùng nhiều thương hiệu hơn',
     },
     benefits: {
-      label: 'CREATOR BENEFITS', title1: 'Quyền lợi đa dạng', title2: 'cho creator',
-      desc: 'Cùng Trevity bạn có thể phát triển khi đang du lịch.', cta: 'Bắt đầu ngay →',
+      label: 'CREATOR BENEFITS', title1: 'Quyền lợi hấp dẫn', title2: 'dành cho Creator',
+      desc: 'Biến mỗi chuyến đi thành cơ hội phát triển cùng Trevity.', cta: 'Bắt đầu ngay →',
       b1: 'Trải nghiệm miễn phí', b2: 'Hợp tác thương hiệu toàn cầu', b3: 'Tăng trưởng SNS',
       b4: 'Sáng tạo nội dung du lịch', b5: 'Khám phá quốc gia mới', b6: 'Nâng cấp portfolio',
     },
@@ -414,4 +414,73 @@ export const LOCALE_META: Record<Locale, { label: string; native: string; flag: 
   zh: { label: 'Chinese',    native: '中文',          flag: '🇨🇳' },
   vi: { label: 'Vietnamese', native: 'Tiếng Việt',   flag: '🇻🇳' },
   th: { label: 'Thai',       native: 'ภาษาไทย',     flag: '🇹🇭' },
+};
+
+/**
+ * 캠페인 카테고리의 locale 별 이름/설명 매핑.
+ * DB 의 campaign_categories.name / description 은 한국어 데이터.
+ * 다른 언어로 렌더링 시 여기 매핑이 있으면 우선 사용, 없으면 DB 값 그대로.
+ * 키는 campaign_categories.slug.
+ */
+export const CATEGORY_TRANSLATIONS: Partial<Record<Locale, Record<string, { name: string; description: string }>>> = {
+  en: {
+    hotels:      { name: 'Hotels',         description: 'From luxury hotels to charming stays' },
+    massage:     { name: 'Massage & Spa',  description: 'Experience popular local massages and spas' },
+    restaurants: { name: 'Restaurants',    description: 'Trendy restaurants and authentic local dining' },
+    cafes:       { name: 'Cafes',          description: 'Stylish cafes and must-visit dessert spots' },
+    beauty:      { name: 'Beauty',         description: 'Beauty and lifestyle brands' },
+    activities:  { name: 'Activities',     description: 'Tours, activities, and experience groups' },
+  },
+  vi: {
+    hotels:      { name: 'Khách sạn',      description: 'Từ khách sạn sang trọng đến không gian lưu trú đầy cảm hứng' },
+    massage:     { name: 'Massage & Spa',  description: 'Trải nghiệm massage và spa được yêu thích tại địa phương' },
+    restaurants: { name: 'Restaurants',    description: 'Khám phá nhà hàng xu hướng và ẩm thực bản địa đặc sắc' },
+    cafes:       { name: 'Cafes',          description: 'Những quán cafe mang phong cách riêng cùng tráng miệng hấp dẫn' },
+    beauty:      { name: 'Beauty',         description: 'Các thương hiệu beauty và lifestyle được quan tâm' },
+    activities:  { name: 'Activities',     description: 'Tour, hoạt động trải nghiệm và nội dung khám phá đa dạng' },
+  },
+};
+
+/**
+ * FAQ 의 locale 별 질문/답변 매핑.
+ * DB 의 faqs 는 한국어 데이터. 렌더링 시 sort_order 순서로 정렬 후 동일 인덱스 매칭.
+ * 다른 언어 매핑이 있으면 우선 사용.
+ */
+export const FAQ_TRANSLATIONS: Partial<Record<Locale, { question: string; answer: string }[]>> = {
+  en: [
+    {
+      question: 'Can anyone join?',
+      answer: 'Participation requirements may vary by campaign. In general, anyone with an SNS channel can apply, creators are selected based on factors such as follower count, content quality, and campaign fit.',
+    },
+    {
+      question: 'Which platforms can I use?',
+      answer: 'You can participate using various platforms including Instagram, TikTok, YouTube, and more.',
+    },
+    {
+      question: 'Can foreigners join?',
+      answer: 'Yes. Influencers from different countries are actively participating on Trevity.',
+    },
+    {
+      question: 'Is there any cost to join?',
+      answer: 'Joining Trevity is completely free. Applying for campaigns also does not require any additional fees.',
+    },
+  ],
+  vi: [
+    {
+      question: 'Ai cũng có thể tham gia không?',
+      answer: 'Điều kiện tham gia có thể khác nhau tùy từng chiến dịch. Thông thường, chỉ cần sở hữu kênh SNS là bạn đã có thể ứng tuyển. Việc lựa chọn creator sẽ dựa trên follower, chất lượng nội dung và mức độ phù hợp với chiến dịch.',
+    },
+    {
+      question: 'Có thể sử dụng nền tảng nào?',
+      answer: 'Bạn có thể tham gia bằng nhiều nền tảng như Instagram, TikTok, YouTube và nhiều kênh khác.',
+    },
+    {
+      question: 'Người nước ngoài có thể tham gia không?',
+      answer: 'Có. Hiện nhiều influencer từ các quốc gia khác nhau đang tham gia cùng Trevity.',
+    },
+    {
+      question: 'Có phát sinh chi phí không?',
+      answer: 'Đăng ký Trevity hoàn toàn miễn phí. Việc tham gia và ứng tuyển chiến dịch cũng không mất thêm chi phí.',
+    },
+  ],
 };

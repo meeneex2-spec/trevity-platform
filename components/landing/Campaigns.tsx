@@ -1,6 +1,7 @@
 'use client';
 
 import { useT } from '@/lib/i18n/LanguageProvider';
+import { CATEGORY_TRANSLATIONS } from '@/lib/i18n/dictionaries';
 
 type Category = {
   id: number;
@@ -13,7 +14,9 @@ type Category = {
 };
 
 export default function Campaigns({ categories }: { categories: Category[] }) {
-  const { t } = useT();
+  const { t, locale } = useT();
+  const translations = CATEGORY_TRANSLATIONS[locale];
+
   return (
     <section id="campaigns" className="section-campaigns">
       <div className="section-inner">
@@ -22,19 +25,24 @@ export default function Campaigns({ categories }: { categories: Category[] }) {
           <h2 className="section-title">{t.campaigns.title1}<br />{t.campaigns.title2}</h2>
         </div>
         <div className="campaigns-grid">
-          {categories.map((c) => (
-            <div
-              key={c.id}
-              className={`camp-card ${c.size === 'tall' ? 'tall' : ''} ${c.image_url ? 'has-image' : ''}`}
-              style={c.image_url ? ({ ['--card-bg' as any]: `url(${c.image_url})` } as React.CSSProperties) : undefined}
-            >
-              <span className="camp-icon">{c.icon}</span>
-              <div className="camp-content">
-                <div className="camp-title">{c.name}</div>
-                {c.description && <p className="camp-desc">{c.description}</p>}
+          {categories.map((c) => {
+            const tr = translations?.[c.slug];
+            const name = tr?.name ?? c.name;
+            const description = tr?.description ?? c.description;
+            return (
+              <div
+                key={c.id}
+                className={`camp-card ${c.size === 'tall' ? 'tall' : ''} ${c.image_url ? 'has-image' : ''}`}
+                style={c.image_url ? ({ ['--card-bg' as any]: `url(${c.image_url})` } as React.CSSProperties) : undefined}
+              >
+                <span className="camp-icon">{c.icon}</span>
+                <div className="camp-content">
+                  <div className="camp-title">{name}</div>
+                  {description && <p className="camp-desc">{description}</p>}
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

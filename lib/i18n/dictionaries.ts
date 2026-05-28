@@ -230,8 +230,8 @@ export const dictionaries: Record<Locale, Dictionary> = {
     nav: { campaigns: '活动', regions: '国家', creators: '创作者', faq: 'FAQ', cta: '成为达人' },
     hero: {
       badge: '✈️  全球创作者平台',
-      title1: '去旅行,', title2: '创作内容,', title3: '与品牌共同成长',
-      desc: 'Trevity 是连接全球品牌与达人的旅行体验平台。酒店、按摩、餐厅、活动 — 体验多元化的旅行活动并创作内容。',
+      title1: '以旅行为载体，', title2: '以内容为纽带，', title3: '与品牌携手发展',
+      desc: 'Trevity 是连接全球品牌与达人的旅行体验平台，覆盖酒店、康养、餐饮、特色活动等多元场景。于旅途之中萃取灵感，创作精品内容。',
       ctaPrimary: '成为达人 →', ctaSecondary: '浏览活动',
       regions: '韩国 · 越南 · 日本 · 泰国 · 台湾 · 香港 · 新加坡',
       scrollHint: 'SCROLL',
@@ -241,21 +241,21 @@ export const dictionaries: Record<Locale, Dictionary> = {
     },
     what: {
       label: 'WHAT IS TREVITY', title1: '让旅行体验', title2: '变成精彩内容',
-      desc: 'Trevity 连接品牌与达人,提供全新的旅行体验与内容机会。不是简单的广告,而是基于真实体验的内容。',
-      f1Title: '全球活动', f1Desc: '酒店、按摩、餐厅、活动等多元化旅行活动',
+      desc: 'Trevity 联动品牌与达人，解锁全新旅行体验与创作机会，拒绝传统广告，只做真实体验分享。',
+      f1Title: '全球活动', f1Desc: '酒店·按摩·餐厅·等多元化旅行活动',
       f2Title: '内容增长', f2Desc: '通过品牌合作提升 SNS 内容与影响力',
       f3Title: '轻松参与', f3Desc: '注册后可立即申请喜欢的活动',
       f4Title: '体验多国文化', f4Desc: '体验亚洲多国活动',
     },
     regions: {
       label: 'GLOBAL REGIONS', title1: '邂逅亚洲全球', title2: '活动网络',
-      desc: 'Trevity 连接多个国家的品牌与达人。',
+      desc: 'Trevity 搭建品牌与创意达人共赢平台',
     },
     campaigns: {
       label: 'CAMPAIGNS', title1: '体验丰富多样的', title2: '旅行活动',
     },
     how: {
-      label: 'HOW IT WORKS', title1: '简单快速', title2: '即刻开始',
+      label: 'HOW IT WORKS', title1: '简单入驻，', title2: '立刻参与',
       s1Title: '注册', s1Desc: '成为 Trevity 创作者',
       s2Title: '申请活动', s2Desc: '申请你想要的活动',
       s3Title: '体验与创作', s3Desc: '体验品牌并创作内容',

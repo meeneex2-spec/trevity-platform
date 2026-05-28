@@ -8,7 +8,7 @@
  * - zh-CN(간체)/vi/th 는 기본 번역. 운영 시 원어민 검토 권장.
  */
 
-export const LOCALES = ['ko', 'en', 'ja', 'zh', 'vi', 'th'] as const;
+export const LOCALES = ['ko', 'en', 'ja', 'zh', 'vi', 'th', 'my'] as const;
 export type Locale = (typeof LOCALES)[number];
 
 export type Dictionary = {
@@ -405,6 +405,66 @@ export const dictionaries: Record<Locale, Dictionary> = {
     },
     common: { languageLabel: 'ภาษา' },
   },
+
+  my: {
+    nav: { campaigns: 'ကမ်ပိန်း', regions: 'နိုင်ငံများ', creators: 'Creator', faq: 'FAQ', cta: 'Influencer အဖြစ် စတင်ရန်' },
+    hero: {
+      badge: '✈️  ကမ္ဘာလုံးဆိုင်ရာ Creator Platform',
+      title1: 'ခရီးသွား,', title2: 'အကြောင်းအရာဖန်တီး,', title3: 'ဩဇာရှင်ဖြစ်အောင်တိုးတက်',
+      desc: 'Trevity သည် ကမ္ဘာလုံးဆိုင်ရာ အမှတ်တံဆိပ်များနှင့် influencer များကို ခရီးသွားအတွေ့အကြုံများဖြင့် ချိတ်ဆက်ပေးသော ပလက်ဖောင်းတစ်ခုဖြစ်သည်။ ဟိုတယ်၊ စပါ၊ စားသောက်ဆိုင်နှင့် အခြားကမ်ပိန်းများကို ခံစားပြီး အကြောင်းအရာဖန်တီးနိုင်ပါသည်။',
+      ctaPrimary: 'Influencer အဖြစ် စတင်ရန် →', ctaSecondary: 'ကမ်ပိန်းများ ကြည့်ရန်',
+      regions: 'ကိုရီးယား · ဗီယက်နမ် · ဂျပန် · ထိုင်း · ထိုင်ဝမ် · ဟောင်ကောင် · စင်ကာပူ',
+      scrollHint: 'SCROLL',
+      phoneNotifTitle: 'ကမ်ပိန်းအသစ် အတည်ပြုပြီး!', phoneNotifSub: 'Bangkok Hotel — စတင်ရန် အသင့်',
+      phoneTag: '✓ ပါဝင်နေသည်', phoneSub: 'ဤဟိုတယ်ကို ခံစားပြီး\nအကြောင်းအရာဖန်တီးပါ',
+      phoneSec1: '📊 15K followers+', phoneSec2: '🎯 ကမ်ပိန်းလျှောက်နိုင်သည်',
+    },
+    what: {
+      label: 'WHAT IS TREVITY', title1: 'အတွေ့အကြုံအစစ်,', title2: 'အကြောင်းအရာအစစ်',
+      desc: 'Trevity သည် အမှတ်တံဆိပ်များနှင့် influencer များကို အစစ်အမှန် ခရီးသွားအတွေ့အကြုံများဖြင့် ချိတ်ဆက်ပေးပါသည်။ ကြော်ငြာသာ မဟုတ်ဘဲ၊ အတွေ့အကြုံအခြေပြုသော အကြောင်းအရာများကို ဖန်တီးပါ။',
+      f1Title: 'ကမ္ဘာလုံးဆိုင်ရာ ကမ်ပိန်း', f1Desc: 'ဟိုတယ်၊ စပါ၊ စားသောက်ဆိုင်နှင့် အာရှတစ်ဝန်းမှ ထူးခြားသောအတွေ့အကြုံများ',
+      f2Title: 'အကြောင်းအရာ မြှင့်တင်', f2Desc: 'ကမ္ဘာလုံးဆိုင်ရာ အမှတ်တံဆိပ်များနှင့်အတူ SNS ဩဇာတိုးချဲ့',
+      f3Title: 'လွယ်ကူသော စာရင်းသွင်း', f3Desc: 'အဆင့်အနည်းငယ်ဖြင့် ကမ်ပိန်းပါဝင်နိုင်သည်',
+      f4Title: 'နိုင်ငံစုံ အခွင့်အရေး', f4Desc: 'နိုင်ငံစုံတွင် influencer အလုပ်တိုးချဲ့လုပ်နိုင်သည်',
+    },
+    regions: {
+      label: 'GLOBAL REGIONS', title1: 'အာရှတစ်ဝန်း', title2: 'ကမ်ပိန်းကွန်ရက်',
+      desc: 'Trevity သည် နိုင်ငံစုံတွင် အမှတ်တံဆိပ်များနှင့် influencer များကို ချိတ်ဆက်ပေးပါသည်။',
+    },
+    campaigns: {
+      label: 'CAMPAIGNS', title1: 'ထူးခြားသော', title2: 'ခရီးသွားအတွေ့အကြုံများ',
+    },
+    how: {
+      label: 'HOW IT WORKS', title1: 'ရိုးရှင်း၊ မြန်ဆန်', title2: 'Trevity နှင့်အတူ စတင်ပါ',
+      s1Title: 'စာရင်းသွင်း', s1Desc: 'Trevity Creator ဖြစ်လာပါ',
+      s2Title: 'လျှောက်ထား', s2Desc: 'သင်ကြိုက်နှစ်သက်သော ကမ်ပိန်းကို ရွေးချယ်ပါ',
+      s3Title: 'ခံစား & ဖန်တီး', s3Desc: 'အမှတ်တံဆိပ်ကို ခံစားပြီး အကြောင်းအရာဖန်တီးပါ',
+      s4Title: 'တိုးတက်', s4Desc: 'ပိုမို၍ အမှတ်တံဆိပ်များနှင့် ပူးပေါင်းခွင့်တိုးချဲ့',
+    },
+    benefits: {
+      label: 'CREATOR BENEFITS', title1: 'ဆွဲဆောင်မှုရှိသော အကျိုးခံစားခွင့်', title2: 'Creator များအတွက်',
+      desc: 'ခရီးတိုင်းကို Trevity နှင့်အတူ တိုးတက်ရန် အခွင့်အရေးဖြစ်စေပါ။', cta: 'ယခု စတင် →',
+      b1: 'အခမဲ့ အတွေ့အကြုံ', b2: 'ကမ္ဘာလုံးဆိုင်ရာ ပူးပေါင်းမှု', b3: 'SNS တိုးတက်',
+      b4: 'ခရီးသွား အကြောင်းအရာ', b5: 'နိုင်ငံသစ်များ', b6: 'Portfolio မြှင့်တင်',
+    },
+    content: {
+      label: 'CREATOR CONTENT', title1: 'အစစ်အမှန် Creator', title2: 'အကြောင်းအရာ',
+      desc: 'Trevity Creator များ၏ အစစ်အမှန် ခရီးသွားအကြောင်းအရာများကို ကြည့်ပါ',
+    },
+    faq: { label: 'FAQ', title: 'မေးခွန်းများ' },
+    finalCta: {
+      title1: 'ကမ္ဘာလုံးဆိုင်ရာ ခရီးသွားကမ်ပိန်းကို', title2: 'ယနေ့ပင် စတင်ပါ',
+      desc: 'Trevity နှင့်အတူ ခရီးသွားအတွေ့အကြုံအသစ်များနှင့် အကြောင်းအရာများကို ဖန်တီးပါ',
+      cta: 'Influencer အဖြစ် စတင်ရန် →',
+      check1: 'အခမဲ့ စာရင်းသွင်း', check2: 'နိုင်ငံ ၈ ခု ကမ်ပိန်း', check3: 'ကမ္ဘာလုံးဆိုင်ရာ အမှတ်တံဆိပ်များ',
+    },
+    footer: {
+      tagline: 'ကမ္ဘာလုံးဆိုင်ရာ Influencer ခရီးသွားအတွေ့အကြုံ ပလက်ဖောင်း',
+      l1: 'စည်းကမ်းချက်', l2: 'ကိုယ်ရေးကိုယ်တာ မူဝါဒ', l3: 'Creator Center', l4: 'ဆက်သွယ်ရန်',
+      copy: '© 2026 Trevity. All rights reserved.',
+    },
+    common: { languageLabel: 'ဘာသာစကား' },
+  },
 };
 
 export const LOCALE_META: Record<Locale, { label: string; native: string; flag: string }> = {
@@ -414,6 +474,7 @@ export const LOCALE_META: Record<Locale, { label: string; native: string; flag: 
   zh: { label: 'Chinese',    native: '中文',          flag: '🇨🇳' },
   vi: { label: 'Vietnamese', native: 'Tiếng Việt',   flag: '🇻🇳' },
   th: { label: 'Thai',       native: 'ภาษาไทย',     flag: '🇹🇭' },
+  my: { label: 'Burmese',    native: 'မြန်မာ',       flag: '🇲🇲' },
 };
 
 /**
@@ -438,6 +499,14 @@ export const CATEGORY_TRANSLATIONS: Partial<Record<Locale, Record<string, { name
     cafes:       { name: 'Cafes',          description: 'Những quán cafe mang phong cách riêng cùng tráng miệng hấp dẫn' },
     beauty:      { name: 'Beauty',         description: 'Các thương hiệu beauty và lifestyle được quan tâm' },
     activities:  { name: 'Activities',     description: 'Tour, hoạt động trải nghiệm và nội dung khám phá đa dạng' },
+  },
+  my: {
+    hotels:      { name: 'ဟိုတယ်',          description: 'ဖျော်ဖြေရေး ဟိုတယ်များမှ စိတ်ဝင်စားဖွယ်ရာ နေထိုင်ရာများအထိ' },
+    massage:     { name: 'Massage & Spa',   description: 'ဒေသခံများ နှစ်သက်သော massage နှင့် spa အတွေ့အကြုံ' },
+    restaurants: { name: 'Restaurants',     description: 'ခေတ်စားနေသော စားသောက်ဆိုင်များနှင့် ဒေသခံ အစားအသောက်' },
+    cafes:       { name: 'Cafes',           description: 'ထူးခြားသော ကဖေးများနှင့် dessert spot များ' },
+    beauty:      { name: 'Beauty',          description: 'Beauty နှင့် lifestyle brand များ' },
+    activities:  { name: 'Activities',      description: 'Tour, လှုပ်ရှားမှုနှင့် အတွေ့အကြုံများ' },
   },
 };
 
@@ -481,6 +550,24 @@ export const FAQ_TRANSLATIONS: Partial<Record<Locale, { question: string; answer
     {
       question: 'Có phát sinh chi phí không?',
       answer: 'Đăng ký Trevity hoàn toàn miễn phí. Việc tham gia và ứng tuyển chiến dịch cũng không mất thêm chi phí.',
+    },
+  ],
+  my: [
+    {
+      question: 'မည်သူမဆို ပါဝင်နိုင်ပါသလား?',
+      answer: 'ပါဝင်ရန် လိုအပ်ချက်များသည် ကမ်ပိန်းအလိုက် ကွဲပြားနိုင်ပါသည်။ ယေဘုယျအားဖြင့် SNS channel ရှိသူ မည်သူမဆို လျှောက်ထားနိုင်ပြီး၊ follower အရေအတွက်၊ အကြောင်းအရာ အရည်အသွေးနှင့် ကမ်ပိန်းနှင့် ကိုက်ညီမှုကို အခြေခံ၍ ရွေးချယ်ပါသည်။',
+    },
+    {
+      question: 'မည်သည့် platform များကို သုံးနိုင်ပါသလဲ?',
+      answer: 'Instagram, TikTok, YouTube နှင့် အခြား platform များတွင် ပါဝင်နိုင်ပါသည်။',
+    },
+    {
+      question: 'နိုင်ငံခြားသား ပါဝင်နိုင်ပါသလား?',
+      answer: 'ပါဝင်နိုင်ပါသည်။ နိုင်ငံစုံမှ influencer များ Trevity တွင် တက်ကြွစွာ ပါဝင်နေပါသည်။',
+    },
+    {
+      question: 'အသုံးပြုခ ရှိပါသလား?',
+      answer: 'Trevity တွင် စာရင်းသွင်းခြင်းသည် လုံးဝ အခမဲ့ဖြစ်သည်။ ကမ်ပိန်းလျှောက်ထားရာတွင်လည်း အပိုကုန်ကျစရိတ် မရှိပါ။',
     },
   ],
 };

@@ -500,6 +500,30 @@ export const CATEGORY_TRANSLATIONS: Partial<Record<Locale, Record<string, { name
     beauty:      { name: 'Beauty',         description: 'Các thương hiệu beauty và lifestyle được quan tâm' },
     activities:  { name: 'Activities',     description: 'Tour, hoạt động trải nghiệm và nội dung khám phá đa dạng' },
   },
+  ja: {
+    hotels:      { name: 'ホテル',           description: '高級ホテルから感性あふれる宿泊まで' },
+    massage:     { name: 'マッサージ & スパ', description: '現地で人気のマッサージとスパ体験' },
+    restaurants: { name: 'レストラン',       description: 'トレンドのお店とローカルレストラン' },
+    cafes:       { name: 'カフェ',           description: '感性カフェとデザートスポット' },
+    beauty:      { name: 'ビューティー',     description: 'ビューティー & ライフスタイルブランド' },
+    activities:  { name: 'アクティビティ',   description: 'ツアー、アクティビティ、体験コンテンツ' },
+  },
+  zh: {
+    hotels:      { name: '酒店',             description: '从豪华酒店到精品民宿' },
+    massage:     { name: '按摩与水疗',       description: '当地热门按摩与水疗体验' },
+    restaurants: { name: '餐厅',             description: '时尚餐厅与地道本地美食' },
+    cafes:       { name: '咖啡馆',           description: '风格咖啡馆与必访甜品' },
+    beauty:      { name: '美妆',             description: '美妆与生活方式品牌' },
+    activities:  { name: '活动',             description: '旅行、活动、体验内容' },
+  },
+  th: {
+    hotels:      { name: 'โรงแรม',           description: 'ตั้งแต่โรงแรมหรูถึงที่พักสไตล์อบอุ่น' },
+    massage:     { name: 'นวดและสปา',         description: 'สัมผัสนวดและสปายอดนิยมในท้องถิ่น' },
+    restaurants: { name: 'ร้านอาหาร',         description: 'ร้านอาหารทันสมัยและอาหารท้องถิ่นแท้ๆ' },
+    cafes:       { name: 'คาเฟ่',             description: 'คาเฟ่สไตล์เก๋และของหวานต้องลอง' },
+    beauty:      { name: 'บิวตี้',            description: 'แบรนด์บิวตี้และไลฟ์สไตล์' },
+    activities:  { name: 'กิจกรรม',           description: 'ทัวร์, กิจกรรม, คอนเทนต์ประสบการณ์' },
+  },
   my: {
     hotels:      { name: 'ဟိုတယ်',          description: 'ဖျော်ဖြေရေး ဟိုတယ်များမှ စိတ်ဝင်စားဖွယ်ရာ နေထိုင်ရာများအထိ' },
     massage:     { name: 'Massage & Spa',   description: 'ဒေသခံများ နှစ်သက်သော massage နှင့် spa အတွေ့အကြုံ' },
@@ -550,6 +574,60 @@ export const FAQ_TRANSLATIONS: Partial<Record<Locale, { question: string; answer
     {
       question: 'Có phát sinh chi phí không?',
       answer: 'Đăng ký Trevity hoàn toàn miễn phí. Việc tham gia và ứng tuyển chiến dịch cũng không mất thêm chi phí.',
+    },
+  ],
+  ja: [
+    {
+      question: '誰でも参加できますか?',
+      answer: '参加条件はキャンペーンによって異なります。一般的にSNSチャンネルをお持ちの方なら応募可能で、フォロワー数、コンテンツの質、キャンペーンとの適合性などに基づいてクリエイターが選ばれます。',
+    },
+    {
+      question: 'どのプラットフォームを使えますか?',
+      answer: 'Instagram、TikTok、YouTubeなど、さまざまなプラットフォームでご参加いただけます。',
+    },
+    {
+      question: '外国の方でも参加できますか?',
+      answer: 'はい。さまざまな国のインフルエンサーがTrevityで活発に活動しています。',
+    },
+    {
+      question: '費用はかかりますか?',
+      answer: 'Trevityへのご登録は完全無料です。キャンペーンへの応募にも追加料金はかかりません。',
+    },
+  ],
+  zh: [
+    {
+      question: '任何人都可以参加吗?',
+      answer: '参加条件因活动而异。一般来说,只要拥有SNS渠道即可申请,我们将根据粉丝数、内容质量、与活动的契合度等因素选择创作者。',
+    },
+    {
+      question: '可以使用哪些平台?',
+      answer: '您可以使用 Instagram、TikTok、YouTube 等多种平台参与。',
+    },
+    {
+      question: '外国人可以参加吗?',
+      answer: '可以。来自不同国家的达人正活跃地在 Trevity 上参与。',
+    },
+    {
+      question: '是否需要费用?',
+      answer: '注册 Trevity 完全免费。申请活动也无需额外费用。',
+    },
+  ],
+  th: [
+    {
+      question: 'ใครก็เข้าร่วมได้หรือไม่?',
+      answer: 'ข้อกำหนดในการเข้าร่วมอาจแตกต่างกันไปตามแคมเปญ โดยทั่วไปผู้ที่มีช่อง SNS สามารถสมัครได้ ครีเอเตอร์จะถูกเลือกจากปัจจัยต่างๆ เช่น จำนวนผู้ติดตาม คุณภาพคอนเทนต์ และความเข้ากันได้ของแคมเปญ',
+    },
+    {
+      question: 'ใช้แพลตฟอร์มใดได้บ้าง?',
+      answer: 'คุณสามารถเข้าร่วมได้บนหลายแพลตฟอร์ม เช่น Instagram, TikTok, YouTube และอื่นๆ',
+    },
+    {
+      question: 'ชาวต่างชาติเข้าร่วมได้หรือไม่?',
+      answer: 'ได้ Influencer จากหลายประเทศกำลังเข้าร่วม Trevity อย่างคึกคัก',
+    },
+    {
+      question: 'มีค่าใช้จ่ายหรือไม่?',
+      answer: 'การลงทะเบียน Trevity ฟรีทั้งหมด การสมัครแคมเปญก็ไม่มีค่าใช้จ่ายเพิ่มเติม',
     },
   ],
   my: [

@@ -8,7 +8,7 @@ export default function FinalCta() {
     <section id="cta-final" className="cta-final-section">
       <div className="cta-glow" />
       <div className="cta-final-inner">
-        <h2 className="cta-final-title">{t.finalCta.title1}<br />{t.finalCta.title2}</h2>
+        <h2 className="cta-final-title">{t.finalCta.title1}{t.finalCta.title2 && (<><br />{t.finalCta.title2}</>)}</h2>
         <p className="cta-final-desc">{t.finalCta.desc}</p>
         <a
           href={ctaUrl}

@@ -17,7 +17,7 @@ export default function HowItWorks() {
       <div className="section-inner" style={{ position: 'relative' }}>
         <div className="section-header" style={{ maxWidth: 500 }}>
           <p className="section-label">{t.how.label}</p>
-          <h2 className="section-title">{t.how.title1}<br />{t.how.title2}</h2>
+          <h2 className="section-title">{t.how.title1}{t.how.title2 && (<><br />{t.how.title2}</>)}</h2>
         </div>
         <div className="steps-grid">
           <span className="step-arrow step-arrow-1">→</span>

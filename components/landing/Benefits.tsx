@@ -18,7 +18,7 @@ export default function Benefits() {
       <div className="benefits-inner">
         <div className="benefits-left">
           <p className="section-label">{t.benefits.label}</p>
-          <h2 className="section-title">{t.benefits.title1}<br />{t.benefits.title2}</h2>
+          <h2 className="section-title">{t.benefits.title1}{t.benefits.title2 && (<><br />{t.benefits.title2}</>)}</h2>
           <p className="section-desc">{t.benefits.desc}</p>
           <a href={ctaUrl} target="_blank" rel="noopener noreferrer" className="btn-primary">
             {t.benefits.cta}

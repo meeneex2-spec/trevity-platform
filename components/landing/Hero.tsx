@@ -13,7 +13,9 @@ export default function Hero() {
         <div className="hero-left">
           <span className="hero-badge">{t.hero.badge}</span>
           <h1 className="hero-title">
-            {t.hero.title1}<br />{t.hero.title2}<br />{t.hero.title3}
+            {t.hero.title1}
+            {t.hero.title2 && (<><br />{t.hero.title2}</>)}
+            {t.hero.title3 && (<><br />{t.hero.title3}</>)}
           </h1>
           <p className="hero-desc">{t.hero.desc}</p>
           <div className="hero-cta-group">

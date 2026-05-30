@@ -19,7 +19,7 @@ export default function Reels({ reels }: { reels: Reel[] }) {
       <div className="section-inner">
         <div className="section-header" style={{ maxWidth: 500 }}>
           <p className="section-label">{t.content.label}</p>
-          <h2 className="section-title">{t.content.title1}<br />{t.content.title2}</h2>
+          <h2 className="section-title">{t.content.title1}{t.content.title2 && (<><br />{t.content.title2}</>)}</h2>
           <p className="section-desc">{t.content.desc}</p>
         </div>
         <div className="reels-grid-v2">

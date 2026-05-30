@@ -19,7 +19,7 @@ export default function Regions({ countries }: { countries: Country[] }) {
       <div className="section-inner">
         <div className="section-header">
           <p className="section-label">{t.regions.label}</p>
-          <h2 className="section-title">{t.regions.title1}<br />{t.regions.title2}</h2>
+          <h2 className="section-title">{t.regions.title1}{t.regions.title2 && (<><br />{t.regions.title2}</>)}</h2>
           <p className="section-desc">{t.regions.desc}</p>
         </div>
         <div className="countries-grid">

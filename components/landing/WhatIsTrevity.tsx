@@ -16,7 +16,7 @@ export default function WhatIsTrevity() {
       <div className="section-inner">
         <div className="section-header">
           <p className="section-label">{t.what.label}</p>
-          <h2 className="section-title">{t.what.title1}<br />{t.what.title2}</h2>
+          <h2 className="section-title">{t.what.title1}{t.what.title2 && (<><br />{t.what.title2}</>)}</h2>
           <p className="section-desc">{t.what.desc}</p>
         </div>
         <div className="cards-grid">

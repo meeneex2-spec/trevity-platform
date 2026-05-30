@@ -22,7 +22,7 @@ export default function Campaigns({ categories }: { categories: Category[] }) {
       <div className="section-inner">
         <div className="section-header" style={{ maxWidth: 500 }}>
           <p className="section-label">{t.campaigns.label}</p>
-          <h2 className="section-title">{t.campaigns.title1}<br />{t.campaigns.title2}</h2>
+          <h2 className="section-title">{t.campaigns.title1}{t.campaigns.title2 && (<><br />{t.campaigns.title2}</>)}</h2>
         </div>
         <div className="campaigns-grid">
           {categories.map((c) => {

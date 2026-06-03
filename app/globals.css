@@ -50,11 +50,13 @@ body {
   line-height: 1.15;
   color: var(--text-dark);
   margin-bottom: 20px;
+  white-space: pre-line;        /* \n 줄바꿈 인식 */
 }
 .section-desc {
   font-size: 17px;
   line-height: 1.7;
   color: var(--text-sub);
+  white-space: pre-line;
 }
 
 /* ─── NAV ─── */
@@ -230,6 +232,7 @@ body {
   line-height: 1.14;
   color: var(--text-white);
   margin-bottom: 32px;
+  white-space: pre-line;
   letter-spacing: -1px;
 }
 .hero-desc {
@@ -454,7 +457,7 @@ body {
   margin-bottom: 24px;
 }
 .card-title { font-size: 18px; font-weight: 700; color: var(--text-dark); margin-bottom: 12px; }
-.card-desc { font-size: 14px; line-height: 1.6; color: var(--text-sub); }
+.card-desc { font-size: 14px; line-height: 1.6; color: var(--text-sub); white-space: pre-line; }
 
 .countries-grid {
   display: grid;
@@ -609,7 +612,7 @@ a.country-card { text-decoration: none; color: inherit; }
 
 .camp-icon { font-size: 40px; margin-bottom: 24px; display: block; }
 .camp-title { font-size: 20px; font-weight: 700; color: var(--text-dark); margin-bottom: 8px; }
-.camp-desc { font-size: 14px; color: var(--text-sub); }
+.camp-desc { font-size: 14px; color: var(--text-sub); white-space: pre-line; }
 
 .how-glow {
   position: absolute;
@@ -640,7 +643,7 @@ a.country-card { text-decoration: none; color: inherit; }
 }
 .step-icon { font-size: 36px; margin-bottom: 20px; display: block; }
 .step-title { font-size: 18px; font-weight: 700; color: var(--text-dark); margin-bottom: 12px; }
-.step-desc { font-size: 14px; color: var(--text-sub); line-height: 1.6; }
+.step-desc { font-size: 14px; color: var(--text-sub); line-height: 1.6; white-space: pre-line; }
 
 .benefits-inner {
   max-width: 1440px; margin: 0 auto; padding: 0 120px;
@@ -827,6 +830,7 @@ a.country-card { text-decoration: none; color: inherit; }
   max-height: 0;
   transition: max-height 0.35s ease, padding 0.3s;
   padding: 0 0 0 48px;
+  white-space: pre-line;
 }
 .faq-item.open .faq-answer { max-height: 500px; padding: 0 0 24px 48px; }
 .faq-item.open .faq-toggle { transform: rotate(45deg); color: var(--blue-primary); }
@@ -856,6 +860,7 @@ a.country-card { text-decoration: none; color: inherit; }
   max-width: 700px;
   margin: 0 auto 24px;
   letter-spacing: -1px;
+  white-space: pre-line;
 }
 .cta-final-desc { font-size: 17px; color: rgba(255,255,255,0.8); margin-bottom: 48px; }
 .cta-final-checks { display: flex; justify-content: center; gap: 48px; margin-top: 40px; }

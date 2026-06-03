@@ -129,7 +129,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
     },
     regions: {
       label: 'GLOBAL REGIONS', title1: 'Explore our Asia-wide', title2: 'campaign network',
-      desc: 'Trevity connects brands and influencers through campaigns across multiple countries in Asia.',
+      desc: 'Trevity connects brands and influencers through campaigns\nacross multiple countries in Asia.',
     },
     campaigns: {
       label: 'CAMPAIGNS', title1: 'Discover unique', title2: 'travel experiences',
@@ -139,7 +139,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       s1Title: 'Sign up', s1Desc: 'Join as a Trevity creator',
       s2Title: 'Apply', s2Desc: 'Apply to campaigns you want',
       s3Title: 'Experience & Create', s3Desc: 'Visit the brand and create content',
-      s4Title: 'Grow', s4Desc: 'Unlock new brands and bigger opportunities',
+      s4Title: 'Grow', s4Desc: 'Unlock new brands\nand bigger opportunities',
     },
     benefits: {
       label: 'CREATOR BENEFITS', title1: 'Created for travelers', title2: 'who create',
@@ -290,8 +290,8 @@ export const dictionaries: Record<Locale, Dictionary> = {
     nav: { campaigns: 'Chiến dịch', regions: 'Quốc gia', creators: 'Creator', faq: 'FAQ', cta: 'Bắt đầu làm Influencer' },
     hero: {
       badge: '✈️  Nền tảng Creator toàn cầu',
-      title1: 'Du lịch,', title2: 'sáng tạo nội dung,', title3: 'lan toả sức ảnh hưởng',
-      desc: 'Trevity mở ra cầu nối giữa thương hiệu và influencer qua những chiến dịch trải nghiệm đa dạng — khách sạn, spa, nhà hàng, du lịch và nhiều hoạt động đặc biệt khác trên toàn cầu.',
+      title1: 'Du lịch,\nsáng tạo\nnội dung,\nlan toả\nsức ảnh hưởng', title2: '', title3: '',
+      desc: 'Trevity mở ra cầu nối giữa thương hiệu và influencer qua những chiến dịch trải nghiệm\nđa dạng từ khách sạn, spa, nhà hàng, du lịch\nvà nhiều hoạt động đặc biệt khác trên toàn cầu.',
       ctaPrimary: 'Bắt đầu làm Influencer →', ctaSecondary: 'Khám phá chiến dịch',
       regions: 'Hàn Quốc · Việt Nam · Nhật · Thái Lan · Đài Loan · Hong Kong · Singapore',
       scrollHint: 'SCROLL',
@@ -301,8 +301,8 @@ export const dictionaries: Record<Locale, Dictionary> = {
     },
     what: {
       label: 'WHAT IS TREVITY', title1: 'Trải nghiệm thực tế,', title2: 'nội dung chân thật',
-      desc: 'Trevity kết nối thương hiệu và influencer thông qua các trải nghiệm thực tế, nơi mỗi chuyến đi, dịch vụ hay khoảnh khắc đều có thể trở thành nội dung đầy cảm hứng.',
-      f1Title: 'Chiến dịch toàn cầu', f1Desc: 'Khách sạn, spa, nhà hàng và trải nghiệm nổi bật khắp châu Á',
+      desc: 'Trevity kết nối thương hiệu và influencer thông qua các trải nghiệm thực tế,\nnơi mỗi chuyến đi, dịch vụ hay khoảnh khắc đều có thể trở thành\nnội dung đầy cảm hứng.',
+      f1Title: 'Chiến dịch toàn cầu', f1Desc: 'Khách sạn, spa, nhà hàng và\ntrải nghiệm nổi bật khắp châu Á',
       f2Title: 'Nâng tầm nội dung', f2Desc: 'Mở rộng sức ảnh hưởng SNS cùng các thương hiệu toàn cầu',
       f3Title: 'Đăng ký dễ dàng', f3Desc: 'Tham gia chiến dịch nhanh chóng chỉ với vài bước',
       f4Title: 'Cơ hội đa quốc gia', f4Desc: 'Mở rộng hoạt động influencer trên nhiều thị trường khác nhau',
@@ -315,17 +315,17 @@ export const dictionaries: Record<Locale, Dictionary> = {
       label: 'CAMPAIGNS', title1: 'Khám phá nhiều', title2: 'chiến dịch du lịch',
     },
     how: {
-      label: 'HOW IT WORKS', title1: 'Đơn giản, nhanh chóng', title2: 'bắt đầu cùng Trevity',
+      label: 'HOW IT WORKS', title1: 'Đơn giản,\nnhanh chóng\ncùng Trevity', title2: '',
       s1Title: 'Đăng ký', s1Desc: 'Trở thành Trevity Creator',
       s2Title: 'Ứng tuyển', s2Desc: 'Chọn tham gia chiến dịch bạn yêu thích',
-      s3Title: 'Trải nghiệm & sáng tạo', s3Desc: 'Khám phá thương hiệu và tạo nội dung chân thực',
-      s4Title: 'Phát triển', s4Desc: 'Mở rộng cơ hội hợp tác cùng nhiều thương hiệu hơn',
+      s3Title: 'Trải nghiệm & sáng tạo', s3Desc: 'Khám phá thương hiệu\nvà tạo nội dung chân thực',
+      s4Title: 'Phát triển', s4Desc: 'Mở rộng cơ hội hợp tác\ncùng nhiều thương hiệu hơn',
     },
     benefits: {
       label: 'CREATOR BENEFITS', title1: 'Quyền lợi hấp dẫn', title2: 'dành cho Creator',
       desc: 'Biến mỗi chuyến đi thành cơ hội phát triển cùng Trevity.', cta: 'Bắt đầu ngay →',
       b1: 'Trải nghiệm miễn phí', b2: 'Hợp tác thương hiệu toàn cầu', b3: 'Tăng trưởng SNS',
-      b4: 'Sáng tạo nội dung du lịch', b5: 'Khám phá quốc gia mới', b6: 'Nâng cấp portfolio',
+      b4: 'Sáng tạo nội dung', b5: 'Khám phá quốc gia mới', b6: 'Nâng cấp portfolio',
     },
     content: {
       label: 'CREATOR CONTENT', title1: 'Nội dung thực', title2: 'từ creator',
@@ -410,7 +410,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
     nav: { campaigns: 'Campaign', regions: 'နိုင်ငံများ', creators: 'Creator', faq: 'FAQ', cta: 'Influencer အဖြစ် စတင်ရန်' },
     hero: {
       badge: '✈️  ကမ္ဘာလုံးဆိုင်ရာ Creator Platform',
-      title1: 'ခရီးသွားရင်း Content ဖန်တီးပြီး ပိုမိုတိုးတက်အောင်မြင်လိုက်ပါ။',
+      title1: 'ခရီးသွားရင်း Content ဖန်တီးပြီး\nအောင်မြင်မှုအသစ်တွေကို ရယူလိုက်ပါ။',
       title2: '', title3: '',
       desc: 'Trevity သည် ကမ္ဘာ့အဆင့်မီ Brand တွေနဲ့ Influencer တွေကို ချိတ်ဆက်ပေးတဲ့ ခရီးသွားအတွေ့အကြုံမျှဝေရာ Platform တစ်ခု ဖြစ်ပါတယ်။',
       ctaPrimary: 'Influencer အဖြစ် စတင်ရန် →', ctaSecondary: 'Campaign များကို လေ့လာကြည့်ရှုရန်',
@@ -422,7 +422,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
     },
     what: {
       label: 'WHAT IS TREVITY',
-      title1: 'ခရီးသွားအတွေ့အကြုံတွေကနေ Content ဖြစ်လာမယ့်နေရာ', title2: '',
+      title1: 'ခရီးသွားအတွေ့အကြုံတွေကနေ\nContent ဖြစ်လာမယ့်နေရာ', title2: '',
       desc: 'Trevity သည် Brand တွေနဲ့ Influencer တွေကို ချိတ်ဆက်ပေးပြီး ခရီးသွားအတွေ့အကြုံသစ်တွေနဲ့ Content ဖန်တီးနိုင်မယ့် အခွင့်အလမ်းတွေကို ပေးစွမ်းနေပါသည်။ ရိုးရိုးကြော်ငြာရုံတင်မဟုတ်ဘဲ ကိုယ်တိုင်ကြုံတွေ့ရတဲ့ အတွေ့အကြုံတွေအပေါ် အခြေခံပြီး Content ဖန်တီးပေးပါသည်။',
       f1Title: 'Global Campaign', f1Desc: 'ဟိုတယ်၊ spa၊ စားသောက်ဆိုင်နဲ့ Activity စတဲ့ ခရီးသွား Campaign အစုံအလင်မှာ ပါဝင်နိုင်ခြင်း',
       f2Title: 'Content ပိုင်း တိုးတက်လာခြင်း', f2Desc: 'Brand တွေနဲ့ လက်တွဲပြီး မိမိရဲ့ SNS Content နဲ့ Influence ကို မြှင့်တင်လိုက်ပါ',
@@ -431,12 +431,12 @@ export const dictionaries: Record<Locale, Dictionary> = {
     },
     regions: {
       label: 'GLOBAL REGIONS',
-      title1: 'အာရှတစ်ဝန်းက Global Campaign တွေကို လေ့လာကြည့်လိုက်ပါ', title2: '',
+      title1: 'အာရှတစ်ဝန်းက Global Campaign တွေကို\nလေ့လာကြည့်လိုက်ပါ။', title2: '',
       desc: 'Trevity သည် နိုင်ငံပေါင်းစုံက Brand တွေနဲ့ Influencer တွေကို ချိတ်ဆက်ပေးနေပါသည်။',
     },
     campaigns: {
       label: 'CAMPAIGNS',
-      title1: 'စုံလင်လှတဲ့ ခရီးသွား Campaign တွေကို တွေ့ကြုံခံစားနိုင်ပါသည်။', title2: '',
+      title1: 'စုံလင်လှတဲ့ ခရီးသွား Campaign တွေကို\nတွေ့ကြုံခံစားနိုင်ပါသည်။', title2: '',
     },
     how: {
       label: 'HOW IT WORKS',
@@ -448,14 +448,14 @@ export const dictionaries: Record<Locale, Dictionary> = {
     },
     benefits: {
       label: 'CREATOR BENEFITS',
-      title1: 'Creator များအတွက် ရရှိနိုင်မယ့် အကျိုးခံစားခွင့်မျိုးစုံ', title2: '',
+      title1: 'Creator များအတွက်\nရရှိနိုင်မယ့် အကျိုးခံစားခွင့်မျိုးစုံ', title2: '',
       desc: 'Trevity နဲ့အတူဆိုရင် ခရီးသွားရင်း ပိုမိုတိုးတက်အောင်မြင်နိုင်ပါသည်။', cta: 'ယခု စတင် →',
       b1: 'အခမဲ့ အတွေ့အကြုံရရှိမည့် အခွင့်အရေး', b2: 'ကမ္ဘာ့အဆင့်မီ Brand တွေနဲ့ လက်တွဲလုပ်ဆောင်ခွင့်', b3: 'SNS ပိုင်း တိုးတက်အောင်မြင်လာခြင်း',
       b4: 'ခရီးသွား Content များ ဖန်တီးနိုင်ခြင်း', b5: 'နိုင်ငံအသစ်တွေကို သွားရောက်ကြုံတွေ့ရခြင်း', b6: 'Portfolio ကို ပိုမိုတိုးတက်ကောင်းမွန်လာခြင်း',
     },
     content: {
       label: 'CREATOR CONTENT',
-      title1: 'တကယ့် Creator တွေရဲ့ Content များ', title2: '',
+      title1: 'တကယ့် Creator တွေရဲ့\nContent များ', title2: '',
       desc: 'Trevity Creator တွေရဲ့ စစ်မှန်တဲ့ ခရီးသွား Content တွေကို လေ့လာကြည့်ရှုလိုက်ပါ။',
     },
     faq: { label: 'FAQ', title: 'မေးခွန်းများ' },
@@ -494,18 +494,18 @@ export const CATEGORY_TRANSLATIONS: Partial<Record<Locale, Record<string, { name
   en: {
     hotels:      { name: 'Hotels',         description: 'From luxury hotels to charming stays' },
     massage:     { name: 'Massage & Spa',  description: 'Experience popular local massages and spas' },
-    restaurants: { name: 'Restaurants',    description: 'Trendy restaurants and authentic local dining' },
-    cafes:       { name: 'Cafes',          description: 'Stylish cafes and must-visit dessert spots' },
+    restaurants: { name: 'Restaurants',    description: 'Trendy restaurants\nand authentic local dining' },
+    cafes:       { name: 'Cafes',          description: 'Stylish cafes\nand must-visit dessert spots' },
     beauty:      { name: 'Beauty',         description: 'Beauty and lifestyle brands' },
-    activities:  { name: 'Activities',     description: 'Tours, activities, and experience groups' },
+    activities:  { name: 'Activities',     description: 'Tours, activities,\nand experience groups' },
   },
   vi: {
-    hotels:      { name: 'Khách sạn',      description: 'Từ khách sạn sang trọng đến không gian lưu trú đầy cảm hứng' },
+    hotels:      { name: 'Khách sạn',      description: 'Từ khách sạn sang trọng\nđến không gian lưu trú đầy cảm hứng' },
     massage:     { name: 'Massage & Spa',  description: 'Trải nghiệm massage và spa được yêu thích tại địa phương' },
-    restaurants: { name: 'Restaurants',    description: 'Khám phá nhà hàng xu hướng và ẩm thực bản địa đặc sắc' },
+    restaurants: { name: 'Nhà hàng',       description: 'Khám phá nhà hàng xu hướng\nvà ẩm thực bản địa đặc sắc' },
     cafes:       { name: 'Cafes',          description: 'Những quán cafe mang phong cách riêng cùng tráng miệng hấp dẫn' },
-    beauty:      { name: 'Beauty',         description: 'Các thương hiệu beauty và lifestyle được quan tâm' },
-    activities:  { name: 'Activities',     description: 'Tour, hoạt động trải nghiệm và nội dung khám phá đa dạng' },
+    beauty:      { name: 'Beauty',         description: 'Các thương hiệu beauty\nvà lifestyle được quan tâm' },
+    activities:  { name: 'Activities',     description: 'Tour, hoạt động trải nghiệm\nvà nội dung khám phá đa dạng' },
   },
   ja: {
     hotels:      { name: 'ホテル',           description: '高級ホテルから感性あふれる宿泊まで' },
@@ -550,7 +550,7 @@ export const FAQ_TRANSLATIONS: Partial<Record<Locale, { question: string; answer
   en: [
     {
       question: 'Can anyone join?',
-      answer: 'Participation requirements may vary by campaign. In general, anyone with an SNS channel can apply, creators are selected based on factors such as follower count, content quality, and campaign fit.',
+      answer: 'Participation requirements may vary by campaign. In general, anyone with an SNS channel\ncan apply, creators are selected based on factors such as follower count, content quality,\nand campaign fit.',
     },
     {
       question: 'Which platforms can I use?',

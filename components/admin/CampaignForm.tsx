@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { toast } from 'sonner';
 import { createClient } from '@/lib/supabase/client';
+import { uploadImage as uploadToServer } from '@/lib/upload';
 
 // Quill 은 SSR 비호환 → 클라이언트 사이드만
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false, loading: () => <div style={{ padding: 40, color: '#64748B' }}>에디터 로딩 중...</div> });
@@ -51,13 +52,8 @@ export default function CampaignForm({ mode, initial, categories, countries }: P
     if (!file) return;
     setUploadingThumb(true);
     try {
-      const supabase = createClient();
-      const ext = file.name.split('.').pop();
-      const path = `campaigns/${Date.now()}-${Math.random().toString(36).slice(2, 8)}.${ext}`;
-      const { error } = await supabase.storage.from('campaign-images').upload(path, file, { cacheControl: '3600' });
-      if (error) throw error;
-      const { data } = supabase.storage.from('campaign-images').getPublicUrl(path);
-      setForm((f) => ({ ...f, thumbnail_url: data.publicUrl }));
+      const publicUrl = await uploadToServer(file, 'campaigns');
+      setForm((f) => ({ ...f, thumbnail_url: publicUrl }));
       toast.success('썸네일 업로드 완료');
     } catch (err: any) {
       toast.error(`업로드 실패: ${err.message ?? err}`);

@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
 import { createClient } from '@/lib/supabase/client';
+import { uploadImage as uploadToServer } from '@/lib/upload';
 
 type Country = {
   id: number;
@@ -34,16 +35,11 @@ export default function CountriesEditor({ initial }: { initial: Country[] }) {
   const uploadImage = async (id: number | 'new', file: File) => {
     setUploading(id);
     try {
-      const supabase = createClient();
-      const ext = file.name.split('.').pop();
-      const path = `countries/${Date.now()}-${Math.random().toString(36).slice(2, 8)}.${ext}`;
-      const { error } = await supabase.storage.from('campaign-images').upload(path, file, { cacheControl: '3600' });
-      if (error) throw error;
-      const { data } = supabase.storage.from('campaign-images').getPublicUrl(path);
+      const publicUrl = await uploadToServer(file, 'countries');
       if (id === 'new') {
-        setNewRow({ ...newRow, image_url: data.publicUrl });
+        setNewRow({ ...newRow, image_url: publicUrl });
       } else {
-        updateRow(id, { image_url: data.publicUrl });
+        updateRow(id, { image_url: publicUrl });
       }
       toast.success('이미지 업로드 완료');
     } catch (err: any) {

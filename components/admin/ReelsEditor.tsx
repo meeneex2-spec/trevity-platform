@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
 import { createClient } from '@/lib/supabase/client';
+import { uploadImage } from '@/lib/upload';
 
 type Reel = {
   id: number;
@@ -24,22 +25,22 @@ export default function ReelsEditor({ initial }: { initial: Reel[] }) {
   const update = (id: number, patch: Partial<Reel>) => setRows(rows.map((r) => r.id === id ? { ...r, ...patch } : r));
 
   const handleUpload = async (id: number | 'new', file: File) => {
-    const supabase = createClient();
-    const ext = file.name.split('.').pop();
-    const path = `reels/${Date.now()}-${Math.random().toString(36).slice(2, 8)}.${ext}`;
-    const { error } = await supabase.storage.from('campaign-images').upload(path, file);
-    if (error) { toast.error(`업로드 실패: ${error.message}`); return; }
-    const { data } = supabase.storage.from('campaign-images').getPublicUrl(path);
-    if (id === 'new') {
-      setNewRow({ ...newRow, thumb_url: data.publicUrl });
-      toast.success('업로드 완료 — 아래 [추가] 버튼을 눌러 저장하세요');
-    } else {
-      update(id, { thumb_url: data.publicUrl });
-      // 업로드 즉시 DB 반영 (별도 저장 버튼 없이도 적용)
-      const { error: saveErr } = await supabase.from('reels').update({ thumb_url: data.publicUrl }).eq('id', id);
-      if (saveErr) { toast.error(`저장 실패: ${saveErr.message}`); return; }
-      toast.success('썸네일 업로드 및 저장 완료');
-      router.refresh();
+    try {
+      const publicUrl = await uploadImage(file, 'reels');
+      if (id === 'new') {
+        setNewRow({ ...newRow, thumb_url: publicUrl });
+        toast.success('업로드 완료 — 아래 [추가] 버튼을 눌러 저장하세요');
+      } else {
+        update(id, { thumb_url: publicUrl });
+        // 업로드 즉시 DB 반영 (별도 저장 버튼 없이도 적용)
+        const supabase = createClient();
+        const { error: saveErr } = await supabase.from('reels').update({ thumb_url: publicUrl }).eq('id', id);
+        if (saveErr) { toast.error(`저장 실패: ${saveErr.message}`); return; }
+        toast.success('썸네일 업로드 및 저장 완료');
+        router.refresh();
+      }
+    } catch (err: any) {
+      toast.error(err.message ?? '업로드 실패');
     }
   };
 

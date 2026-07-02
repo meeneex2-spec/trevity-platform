@@ -18,6 +18,20 @@ const LanguageContext = createContext<LanguageContextValue | null>(null);
 const STORAGE_KEY = 'trevity-locale';
 const FALLBACK_LOCALE: Locale = 'en';   // 지원 안 되는 브라우저 언어 → 영어
 
+/**
+ * 언어별 트래비티 사이트 기본 URL.
+ * DB(cta_links)에 값이 있으면 그 값이 우선, 없으면 이 맵으로 연결.
+ */
+const DEFAULT_CTA_URLS: Record<Locale, string> = {
+  ko: 'https://kr.trevity.com',
+  en: 'https://trevity.com',
+  ja: 'https://jp.trevity.com',
+  zh: 'https://cn.trevity.com',
+  vi: 'https://vn.trevity.com',
+  th: 'https://th.trevity.com',
+  my: 'https://mm.trevity.com',
+};
+
 function isValidLocale(v: string): v is Locale {
   return (LOCALES as readonly string[]).includes(v);
 }
@@ -83,7 +97,8 @@ export function LanguageProvider({
     locale,
     setLocale,
     t: applyOverrides(locale, textOverrides?.[locale]),
-    ctaUrl: ctaUrls[locale] ?? ctaUrls.ko ?? ctaUrls.en ?? '#',
+    // DB 값이 없거나 placeholder('#')면 언어별 기본 사이트로
+    ctaUrl: (ctaUrls[locale] && ctaUrls[locale] !== '#') ? ctaUrls[locale]! : DEFAULT_CTA_URLS[locale],
     ctaUrls,
   }), [locale, ctaUrls, textOverrides]);
 

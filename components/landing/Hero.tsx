@@ -33,27 +33,10 @@ export default function Hero() {
             </div>
           </div>
           <div className="phone-main">
-            <div className="phone-main-img-area">
-              <span className="phone-main-title">🏨 Bangkok Luxury Hotel</span>
-            </div>
-            <div className="phone-main-content">
-              <div className="phone-stats">
-                <span>❤️ 4.9</span>
-                <span>📍 Thailand</span>
-                <span>🎬 2.1M views</span>
-              </div>
-              <span className="phone-campaign-tag">{t.hero.phoneTag}</span>
-              <p className="phone-sub-text" style={{ whiteSpace: 'pre-line' }}>{t.hero.phoneSub}</p>
-            </div>
+            <img src="/hero/main.png" alt="트래비티 앱 캠페인 목록 화면" className="phone-screen-img" />
           </div>
           <div className="phone-secondary">
-            <div className="phone-secondary-img">
-              <span className="phone-secondary-title">🌴 Bali Experience</span>
-            </div>
-            <div className="phone-secondary-content">
-              {t.hero.phoneSec1}<br />
-              {t.hero.phoneSec2}
-            </div>
+            <img src="/hero/small.png" alt="트래비티 앱 캠페인 상세 화면" className="phone-screen-img" />
           </div>
         </div>
       </div>

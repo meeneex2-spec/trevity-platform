@@ -45,6 +45,39 @@ export type Dictionary = {
   common: { languageLabel: string };
 };
 
+/** locale 별 문구 override. key = "section.field" (예: "hero.title1"). */
+export type TextOverrides = Partial<Record<Locale, Record<string, string>>>;
+
+/** Dictionary 를 { "section.field": value } 평면 맵으로 변환 (관리자 편집 화면용). */
+export function flattenDictionary(d: Dictionary): Record<string, string> {
+  const out: Record<string, string> = {};
+  for (const section of Object.keys(d) as (keyof Dictionary)[]) {
+    const obj = d[section] as Record<string, string>;
+    for (const field of Object.keys(obj)) {
+      out[`${section}.${field}`] = obj[field];
+    }
+  }
+  return out;
+}
+
+/**
+ * 코드 기본 dictionary 위에 DB override 를 덮어써서 최종 Dictionary 반환.
+ * 알 수 없는 key / 빈 값은 무시하고 기본값 유지.
+ */
+export function applyOverrides(locale: Locale, overrides?: Record<string, string>): Dictionary {
+  const base: Dictionary = JSON.parse(JSON.stringify(dictionaries[locale]));
+  if (!overrides) return base;
+  for (const [key, value] of Object.entries(overrides)) {
+    if (value == null || value === '') continue;
+    const [section, field] = key.split('.');
+    const obj = (base as unknown as Record<string, Record<string, string>>)[section];
+    if (obj && typeof obj === 'object' && field in obj) {
+      obj[field] = value;
+    }
+  }
+  return base;
+}
+
 export const dictionaries: Record<Locale, Dictionary> = {
   ko: {
     nav: { campaigns: '캠페인', regions: '국가', creators: '크리에이터', faq: 'FAQ', cta: '인플루언서 시작하기' },

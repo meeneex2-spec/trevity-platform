@@ -12,7 +12,7 @@ import Faq from './Faq';
 import FinalCta from './FinalCta';
 import Footer from './Footer';
 import { LanguageProvider } from '@/lib/i18n/LanguageProvider';
-import type { Locale } from '@/lib/i18n/dictionaries';
+import type { Locale, TextOverrides } from '@/lib/i18n/dictionaries';
 
 type Props = {
   countries: any[];
@@ -20,11 +20,12 @@ type Props = {
   faqs: any[];
   reels: any[];
   ctaUrls: Partial<Record<Locale, string>>;
+  textOverrides?: TextOverrides;
 };
 
-export default function LandingShell({ countries, categories, faqs, reels, ctaUrls }: Props) {
+export default function LandingShell({ countries, categories, faqs, reels, ctaUrls, textOverrides }: Props) {
   return (
-    <LanguageProvider ctaUrls={ctaUrls}>
+    <LanguageProvider ctaUrls={ctaUrls} textOverrides={textOverrides}>
       <Nav />
       <Hero />
       <WhatIsTrevity />

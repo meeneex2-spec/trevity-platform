@@ -11,6 +11,7 @@ const NAV = [
     { label: '대시보드', href: '/admin/dashboard', icon: '◆' },
   ]},
   { section: '콘텐츠', items: [
+    { label: '사이트 문구', href: '/admin/site-texts', icon: '✏️' },
     { label: '캠페인', href: '/admin/campaigns', icon: '📋' },
     { label: '국가',   href: '/admin/countries', icon: '🌐' },
     { label: '카테고리', href: '/admin/categories', icon: '🏷' },
@@ -68,7 +69,16 @@ export default function AdminShell({
             })}
           </div>
         ))}
-        <div style={{ position: 'absolute', bottom: 16, left: 0, right: 0, padding: '0 24px' }}>
+        <div style={{ position: 'absolute', bottom: 16, left: 0, right: 0, padding: '0 24px', display: 'grid', gap: 8 }}>
+          <a
+            href="/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="admin-btn admin-btn-secondary"
+            style={{ width: '100%', fontSize: 13, padding: '8px 12px', textAlign: 'center', textDecoration: 'none' }}
+          >
+            🏠 홈페이지 바로가기 ↗
+          </a>
           <button
             onClick={handleLogout}
             className="admin-btn admin-btn-secondary"
@@ -83,6 +93,7 @@ export default function AdminShell({
         <div className="admin-topbar">
           <div className="admin-title">
             {pathname === '/admin/dashboard' && '대시보드'}
+            {pathname.startsWith('/admin/site-texts') && '사이트 문구'}
             {pathname.startsWith('/admin/campaigns') && '캠페인 관리'}
             {pathname.startsWith('/admin/countries') && '국가 관리'}
             {pathname.startsWith('/admin/categories') && '카테고리 관리'}

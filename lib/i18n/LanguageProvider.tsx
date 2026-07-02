@@ -1,7 +1,7 @@
 'use client';
 
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
-import { dictionaries, LOCALES, type Dictionary, type Locale } from './dictionaries';
+import { applyOverrides, LOCALES, type Dictionary, type Locale, type TextOverrides } from './dictionaries';
 
 type CtaUrls = Partial<Record<Locale, string>>;
 
@@ -44,10 +44,12 @@ export function LanguageProvider({
   children,
   initialLocale,
   ctaUrls,
+  textOverrides,
 }: {
   children: React.ReactNode;
   initialLocale?: Locale;
   ctaUrls: CtaUrls;
+  textOverrides?: TextOverrides;
 }) {
   // 서버 SSR 단계에서는 'ko' 로 일단 렌더 (FOUC 최소화 — 한국 사용자 다수 가정).
   // 클라이언트 마운트 직후 localStorage > 브라우저 언어 순으로 정확한 locale 적용.
@@ -80,10 +82,10 @@ export function LanguageProvider({
   const value = useMemo<LanguageContextValue>(() => ({
     locale,
     setLocale,
-    t: dictionaries[locale],
+    t: applyOverrides(locale, textOverrides?.[locale]),
     ctaUrl: ctaUrls[locale] ?? ctaUrls.ko ?? ctaUrls.en ?? '#',
     ctaUrls,
-  }), [locale, ctaUrls]);
+  }), [locale, ctaUrls, textOverrides]);
 
   return (
     <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>

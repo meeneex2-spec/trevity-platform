@@ -40,8 +40,10 @@ export function parseEmbed(url: string | null | undefined): EmbedInfo {
  */
 export async function fetchTikTokThumb(url: string | null | undefined): Promise<string | null> {
   if (!url || !/tiktok\.com/.test(url)) return null;
+  // 추적 쿼리스트링 제거 (oEmbed 가 원본 URL 만 인식). 사진 게시물(/photo/)은 미지원 → 실패 시 null.
+  const clean = url.split('?')[0];
   try {
-    const res = await fetch(`https://www.tiktok.com/oembed?url=${encodeURIComponent(url)}`, {
+    const res = await fetch(`https://www.tiktok.com/oembed?url=${encodeURIComponent(clean)}`, {
       next: { revalidate: 3600 },
     });
     if (!res.ok) return null;

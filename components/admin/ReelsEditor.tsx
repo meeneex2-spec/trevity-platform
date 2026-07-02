@@ -74,7 +74,7 @@ export default function ReelsEditor({ initial }: { initial: Reel[] }) {
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
           <h3 style={{ fontSize: 16, fontWeight: 700 }}>Reels 목록</h3>
           <span style={{ fontSize: 12, color: '#64748B' }}>
-            💡 영상 링크 칸에 YouTube / Instagram / TikTok URL 을 입력하면 자동으로 썸네일이 추출됩니다.
+            💡 YouTube · TikTok 링크는 썸네일이 자동 추출됩니다. Instagram(또는 자동 추출 실패 시)은 &apos;파일 선택&apos;으로 썸네일을 직접 올려주세요.
           </span>
         </div>
         <table className="admin-table">

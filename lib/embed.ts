@@ -33,3 +33,21 @@ export function parseEmbed(url: string | null | undefined): EmbedInfo {
 
   return { type: 'other', embedUrl: null, thumbUrl: null };
 }
+
+/**
+ * TikTok 공개 oEmbed 로 썸네일 URL 을 조회 (서버 전용, 토큰 불필요).
+ * 실패하거나 TikTok 링크가 아니면 null. 결과는 1시간 캐시.
+ */
+export async function fetchTikTokThumb(url: string | null | undefined): Promise<string | null> {
+  if (!url || !/tiktok\.com/.test(url)) return null;
+  try {
+    const res = await fetch(`https://www.tiktok.com/oembed?url=${encodeURIComponent(url)}`, {
+      next: { revalidate: 3600 },
+    });
+    if (!res.ok) return null;
+    const data = (await res.json()) as { thumbnail_url?: unknown };
+    return typeof data.thumbnail_url === 'string' ? data.thumbnail_url : null;
+  } catch {
+    return null;
+  }
+}

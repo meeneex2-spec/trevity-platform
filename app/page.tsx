@@ -1,5 +1,6 @@
 import { createClient } from '@/lib/supabase/server';
 import LandingShell from '@/components/landing/LandingShell';
+import { fetchTikTokThumb } from '@/lib/embed';
 import type { Locale, TextOverrides } from '@/lib/i18n/dictionaries';
 
 export const revalidate = 60;
@@ -27,12 +28,21 @@ export default async function HomePage() {
     (textOverrides[row.locale as Locale] ??= {})[row.key] = row.value;
   }
 
+  // 썸네일 미지정 TikTok Reel 은 oEmbed 로 썸네일 자동 보강 (YouTube 는 클라이언트에서 자동 처리)
+  const reels = await Promise.all(
+    (reelsRes.data ?? []).map(async (r) => {
+      if (r.thumb_url) return r;
+      const thumb = await fetchTikTokThumb(r.link_url);
+      return thumb ? { ...r, thumb_url: thumb } : r;
+    })
+  );
+
   return (
     <LandingShell
       countries={countriesRes.data ?? []}
       categories={categoriesRes.data ?? []}
       faqs={faqsRes.data ?? []}
-      reels={reelsRes.data ?? []}
+      reels={reels}
       ctaUrls={ctaUrls}
       textOverrides={textOverrides}
     />

@@ -786,20 +786,17 @@ a.country-card { text-decoration: none; color: inherit; }
   transition: background 0.2s;
 }
 .reel-play-big {
-  font-size: 32px;
-  color: white;
-  background: rgba(162,58,209,0.92);     /* 보라 (브랜드) */
-  width: 64px; height: 64px;
-  border-radius: 50%;
+  /* YouTube 표준 재생 버튼 (SVG) */
+  width: 68px; height: 48px;
   display: flex; align-items: center; justify-content: center;
-  padding-left: 4px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.35);
   position: absolute;
   top: 50%; left: 50%;
   transform: translate(-50%, -50%);
   transition: transform 0.2s;
   z-index: 2;
+  filter: drop-shadow(0 8px 24px rgba(0,0,0,0.4));
 }
+.reel-play-big svg { display: block; width: 100%; height: 100%; }
 .reel-platform-tag {
   position: absolute;
   top: 12px; right: 12px;

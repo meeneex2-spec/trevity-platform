@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
 import { createClient } from '@/lib/supabase/client';
+import TranslationModal from '@/components/admin/TranslationModal';
 
 type Faq = {
   id: number;
@@ -16,6 +17,7 @@ type Faq = {
 export default function FaqsEditor({ initial }: { initial: Faq[] }) {
   const router = useRouter();
   const [rows, setRows] = useState<Faq[]>(initial);
+  const [translating, setTranslating] = useState<Faq | null>(null);
   const [newRow, setNewRow] = useState({ question: '', answer: '', sort_order: 99, is_active: true });
 
   const update = (id: number, patch: Partial<Faq>) => setRows(rows.map((r) => r.id === id ? { ...r, ...patch } : r));
@@ -67,6 +69,8 @@ export default function FaqsEditor({ initial }: { initial: Faq[] }) {
               <div>
                 <button className="admin-btn" style={{ fontSize: 12, padding: '6px 10px' }} onClick={() => save(r)}>저장</button>
                 &nbsp;
+                <button className="admin-btn admin-btn-secondary" style={{ fontSize: 12, padding: '6px 10px' }} title="언어별 번역 수정" onClick={() => setTranslating(r)}>🌐</button>
+                &nbsp;
                 <button className="admin-btn admin-btn-danger" style={{ fontSize: 12, padding: '6px 10px' }} onClick={() => del(r.id)}>삭제</button>
               </div>
             </div>
@@ -90,6 +94,17 @@ export default function FaqsEditor({ initial }: { initial: Faq[] }) {
         </div>
         <button className="admin-btn" onClick={add}>추가</button>
       </div>
+
+      {translating && (
+        <TranslationModal
+          title={`FAQ · ${translating.question.slice(0, 30)}`}
+          fields={[
+            { key: `faq.${translating.id}.question`, label: '질문', base: translating.question },
+            { key: `faq.${translating.id}.answer`, label: '답변', base: translating.answer, multiline: true },
+          ]}
+          onClose={() => setTranslating(null)}
+        />
+      )}
     </>
   );
 }

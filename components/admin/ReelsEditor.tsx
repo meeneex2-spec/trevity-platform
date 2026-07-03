@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
 import { createClient } from '@/lib/supabase/client';
 import { uploadImage } from '@/lib/upload';
+import TranslationModal from '@/components/admin/TranslationModal';
 
 type Reel = {
   id: number;
@@ -44,6 +45,7 @@ export default function ReelsEditor({ initial, countries }: { initial: Reel[]; c
   const router = useRouter();
   const [rows, setRows] = useState<Reel[]>(initial);
   const [statsLoading, setStatsLoading] = useState<number | null>(null);
+  const [translating, setTranslating] = useState<Reel | null>(null);
   const [newRow, setNewRow] = useState({ thumb_url: '', location: '', views_text: '', likes_text: '', link_url: '', sort_order: 99, is_active: true });
 
   const update = (id: number, patch: Partial<Reel>) => setRows(rows.map((r) => r.id === id ? { ...r, ...patch } : r));
@@ -208,6 +210,8 @@ export default function ReelsEditor({ initial, countries }: { initial: Reel[]; c
                     {statsLoading === r.id ? '…' : '↻'}
                   </button>
                   &nbsp;
+                  <button className="admin-btn admin-btn-secondary" style={{ fontSize: 12, padding: '6px 10px' }} title="언어별 번역 수정" onClick={() => setTranslating(r)}>🌐</button>
+                  &nbsp;
                   <button className="admin-btn admin-btn-danger" style={{ fontSize: 12, padding: '6px 10px' }} onClick={() => del(r.id)}>삭제</button>
                 </td>
               </tr>
@@ -246,6 +250,20 @@ export default function ReelsEditor({ initial, countries }: { initial: Reel[]; c
           <button className="admin-btn" onClick={add}>추가</button>
         </div>
       </div>
+
+      {translating && (
+        <TranslationModal
+          title={`Reel · ${translating.location}`}
+          fields={[
+            {
+              key: `reel.${translating.id}.location`,
+              label: '위치 표시 (국기+도시)',
+              base: translating.location,
+            },
+          ]}
+          onClose={() => setTranslating(null)}
+        />
+      )}
     </>
   );
 }

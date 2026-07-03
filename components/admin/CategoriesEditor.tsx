@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
 import { createClient } from '@/lib/supabase/client';
 import { uploadImage as uploadToServer } from '@/lib/upload';
+import TranslationModal from '@/components/admin/TranslationModal';
 
 type Cat = {
   id: number;
@@ -21,6 +22,7 @@ export default function CategoriesEditor({ initial }: { initial: Cat[] }) {
   const router = useRouter();
   const [rows, setRows] = useState<Cat[]>(initial);
   const [uploading, setUploading] = useState<number | 'new' | null>(null);
+  const [translating, setTranslating] = useState<Cat | null>(null);
   const [newRow, setNewRow] = useState({
     slug: '', icon: '', name: '', description: '', image_url: '', size: 'normal', sort_order: 99,
   });
@@ -121,6 +123,8 @@ export default function CategoriesEditor({ initial }: { initial: Cat[] }) {
                 <td>
                   <button className="admin-btn" style={{ fontSize: 12, padding: '6px 10px' }} onClick={() => save(r)}>저장</button>
                   &nbsp;
+                  <button className="admin-btn admin-btn-secondary" style={{ fontSize: 12, padding: '6px 10px' }} title="언어별 번역 수정" onClick={() => setTranslating(r)}>🌐</button>
+                  &nbsp;
                   <button className="admin-btn admin-btn-danger" style={{ fontSize: 12, padding: '6px 10px' }} onClick={() => del(r.id)}>삭제</button>
                 </td>
               </tr>
@@ -157,6 +161,17 @@ export default function CategoriesEditor({ initial }: { initial: Cat[] }) {
           <button className="admin-btn" onClick={add}>추가</button>
         </div>
       </div>
+
+      {translating && (
+        <TranslationModal
+          title={`카테고리 · ${translating.name}`}
+          fields={[
+            { key: `category.${translating.id}.name`, label: '이름', base: translating.name },
+            { key: `category.${translating.id}.description`, label: '설명', base: translating.description ?? '' },
+          ]}
+          onClose={() => setTranslating(null)}
+        />
+      )}
     </>
   );
 }

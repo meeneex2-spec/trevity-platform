@@ -14,7 +14,7 @@ type Category = {
 };
 
 export default function Campaigns({ categories }: { categories: Category[] }) {
-  const { t, locale } = useT();
+  const { t, tr, locale } = useT();
   const translations = CATEGORY_TRANSLATIONS[locale];
 
   return (
@@ -26,9 +26,10 @@ export default function Campaigns({ categories }: { categories: Category[] }) {
         </div>
         <div className="campaigns-grid">
           {categories.map((c) => {
-            const tr = translations?.[c.slug];
-            const name = tr?.name ?? c.name;
-            const description = tr?.description ?? c.description;
+            // 우선순위: 관리자 번역(override) > 코드 번역 > DB 원본
+            const codeTr = translations?.[c.slug];
+            const name = tr(`category.${c.id}.name`, codeTr?.name ?? c.name);
+            const description = tr(`category.${c.id}.description`, codeTr?.description ?? c.description ?? '');
             return (
               <div
                 key={c.id}

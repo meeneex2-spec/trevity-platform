@@ -11,7 +11,7 @@ type FaqItem = {
 };
 
 export default function Faq({ faqs }: { faqs: FaqItem[] }) {
-  const { t, locale } = useT();
+  const { t, tr, locale } = useT();
   const [openId, setOpenId] = useState<number | null>(null);
 
   const translations = FAQ_TRANSLATIONS[locale];
@@ -26,10 +26,10 @@ export default function Faq({ faqs }: { faqs: FaqItem[] }) {
         <div className="faq-container">
           {faqs.map((f, idx) => {
             const isOpen = openId === f.id;
-            // 같은 인덱스의 locale 번역이 있으면 우선 사용
-            const tr = translations?.[idx];
-            const question = tr?.question ?? f.question;
-            const answer = tr?.answer ?? f.answer;
+            // 우선순위: 관리자 번역(override) > 코드 번역(같은 인덱스) > DB 원본
+            const codeTr = translations?.[idx];
+            const question = tr(`faq.${f.id}.question`, codeTr?.question ?? f.question);
+            const answer = tr(`faq.${f.id}.answer`, codeTr?.answer ?? f.answer);
             return (
               <div key={f.id} className={`faq-item ${isOpen ? 'open' : ''}`}>
                 <div

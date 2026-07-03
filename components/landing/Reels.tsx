@@ -13,7 +13,7 @@ type Reel = {
 };
 
 export default function Reels({ reels }: { reels: Reel[] }) {
-  const { t } = useT();
+  const { t, tr } = useT();
   return (
     <section id="content" className="section-content">
       <div className="section-inner">
@@ -41,7 +41,7 @@ export default function Reels({ reels }: { reels: Reel[] }) {
                   {platformLabel && <span className="reel-platform-tag">{platformLabel}</span>}
                 </div>
                 <div className="reel-meta">
-                  <div className="reel-location">{r.location}</div>
+                  <div className="reel-location">{tr(`reel.${r.id}.location`, r.location)}</div>
                   <div className="reel-stats">
                     👁 {r.views_text ?? '—'} &nbsp;❤️ {r.likes_text ?? '—'}
                   </div>

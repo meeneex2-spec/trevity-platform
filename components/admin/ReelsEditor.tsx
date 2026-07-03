@@ -17,9 +17,22 @@ type Reel = {
   is_active: boolean;
 };
 
+/** 영상 링크에서 조회수·좋아요 자동 조회 (YouTube/TikTok — 실패 시 null) */
+async function fetchStats(url: string): Promise<{ views_text: string | null; likes_text: string | null }> {
+  try {
+    const res = await fetch(`/api/reel-stats?url=${encodeURIComponent(url)}`);
+    if (!res.ok) return { views_text: null, likes_text: null };
+    const data = await res.json();
+    return { views_text: data.views_text ?? null, likes_text: data.likes_text ?? null };
+  } catch {
+    return { views_text: null, likes_text: null };
+  }
+}
+
 export default function ReelsEditor({ initial }: { initial: Reel[] }) {
   const router = useRouter();
   const [rows, setRows] = useState<Reel[]>(initial);
+  const [statsLoading, setStatsLoading] = useState<number | null>(null);
   const [newRow, setNewRow] = useState({ thumb_url: '', location: '', views_text: '', likes_text: '', link_url: '', sort_order: 99, is_active: true });
 
   const update = (id: number, patch: Partial<Reel>) => setRows(rows.map((r) => r.id === id ? { ...r, ...patch } : r));
@@ -45,14 +58,48 @@ export default function ReelsEditor({ initial }: { initial: Reel[] }) {
   };
 
   const save = async (row: Reel) => {
+    // 링크가 있고 조회수/좋아요가 비어 있으면 자동 조회해서 채움
+    let { views_text, likes_text } = row;
+    if (row.link_url && (!views_text || !likes_text)) {
+      const stats = await fetchStats(row.link_url);
+      views_text = views_text || stats.views_text;
+      likes_text = likes_text || stats.likes_text;
+      if (stats.views_text || stats.likes_text) update(row.id, { views_text, likes_text });
+    }
+
     const supabase = createClient();
     const { error } = await supabase.from('reels').update({
-      thumb_url: row.thumb_url, location: row.location, views_text: row.views_text,
-      likes_text: row.likes_text, link_url: row.link_url, sort_order: row.sort_order, is_active: row.is_active,
+      thumb_url: row.thumb_url, location: row.location, views_text,
+      likes_text, link_url: row.link_url, sort_order: row.sort_order, is_active: row.is_active,
     }).eq('id', row.id);
     if (error) { toast.error(`저장 실패: ${error.message}`); return; }
     toast.success('정상적으로 수정되었습니다');
     router.refresh();
+  };
+
+  /** ↻ 버튼: 링크에서 조회수·좋아요를 새로 가져와 바로 저장 */
+  const refreshStats = async (row: Reel) => {
+    if (!row.link_url) { toast.error('영상 링크를 먼저 입력하세요.'); return; }
+    setStatsLoading(row.id);
+    try {
+      const stats = await fetchStats(row.link_url);
+      if (!stats.views_text && !stats.likes_text) {
+        toast.error('이 링크에서는 통계를 가져올 수 없습니다. (Instagram·사진 게시물은 수동 입력)');
+        return;
+      }
+      const patch = {
+        views_text: stats.views_text ?? row.views_text,
+        likes_text: stats.likes_text ?? row.likes_text,
+      };
+      update(row.id, patch);
+      const supabase = createClient();
+      const { error } = await supabase.from('reels').update(patch).eq('id', row.id);
+      if (error) { toast.error(`저장 실패: ${error.message}`); return; }
+      toast.success(`자동 등록 완료 — 조회수 ${patch.views_text ?? '—'} · 좋아요 ${patch.likes_text ?? '—'}`);
+      router.refresh();
+    } finally {
+      setStatsLoading(null);
+    }
   };
 
   const del = async (id: number) => {
@@ -66,8 +113,17 @@ export default function ReelsEditor({ initial }: { initial: Reel[] }) {
 
   const add = async () => {
     if (!newRow.location) { toast.error('위치는 필수입니다.'); return; }
+
+    // 링크가 있고 조회수/좋아요가 비어 있으면 자동 조회해서 채움
+    const toInsert = { ...newRow };
+    if (toInsert.link_url && (!toInsert.views_text || !toInsert.likes_text)) {
+      const stats = await fetchStats(toInsert.link_url);
+      toInsert.views_text = toInsert.views_text || (stats.views_text ?? '');
+      toInsert.likes_text = toInsert.likes_text || (stats.likes_text ?? '');
+    }
+
     const supabase = createClient();
-    const { error } = await supabase.from('reels').insert(newRow);
+    const { error } = await supabase.from('reels').insert(toInsert);
     if (error) { toast.error(`추가 실패: ${error.message}`); return; }
     toast.success('정상적으로 추가되었습니다');
     setNewRow({ thumb_url: '', location: '', views_text: '', likes_text: '', link_url: '', sort_order: 99, is_active: true });
@@ -80,7 +136,8 @@ export default function ReelsEditor({ initial }: { initial: Reel[] }) {
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
           <h3 style={{ fontSize: 16, fontWeight: 700 }}>Reels 목록</h3>
           <span style={{ fontSize: 12, color: '#64748B' }}>
-            💡 YouTube · TikTok 링크는 썸네일이 자동 추출됩니다. Instagram(또는 자동 추출 실패 시)은 &apos;파일 선택&apos;으로 썸네일을 직접 올려주세요.
+            💡 YouTube · TikTok 링크는 <b>썸네일 + 조회수·좋아요가 자동 등록</b>됩니다 (저장 시 빈 칸 자동 채움, ↻ 버튼으로 최신값 갱신).
+            Instagram·사진 게시물은 수동 입력해 주세요.
           </span>
         </div>
         <table className="admin-table">
@@ -100,6 +157,16 @@ export default function ReelsEditor({ initial }: { initial: Reel[] }) {
                 <td><input type="checkbox" checked={r.is_active} onChange={(e) => update(r.id, { is_active: e.target.checked })} /></td>
                 <td>
                   <button className="admin-btn" style={{ fontSize: 12, padding: '6px 10px' }} onClick={() => save(r)}>저장</button>
+                  &nbsp;
+                  <button
+                    className="admin-btn admin-btn-secondary"
+                    style={{ fontSize: 12, padding: '6px 10px' }}
+                    title="링크에서 조회수·좋아요 자동 등록"
+                    disabled={statsLoading === r.id}
+                    onClick={() => refreshStats(r)}
+                  >
+                    {statsLoading === r.id ? '…' : '↻'}
+                  </button>
                   &nbsp;
                   <button className="admin-btn admin-btn-danger" style={{ fontSize: 12, padding: '6px 10px' }} onClick={() => del(r.id)}>삭제</button>
                 </td>

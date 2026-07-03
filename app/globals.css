@@ -786,8 +786,8 @@ a.country-card { text-decoration: none; color: inherit; }
   transition: background 0.2s;
 }
 .reel-play-big {
-  /* YouTube 표준 재생 버튼 (SVG) */
-  width: 68px; height: 48px;
+  /* 재생 버튼: 어두운 반투명 원 + 흰 삼각형 (SVG) */
+  width: 64px; height: 64px;
   display: flex; align-items: center; justify-content: center;
   position: absolute;
   top: 50%; left: 50%;

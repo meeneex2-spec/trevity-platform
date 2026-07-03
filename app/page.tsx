@@ -1,6 +1,7 @@
 import { createClient } from '@/lib/supabase/server';
 import LandingShell from '@/components/landing/LandingShell';
 import { fetchTikTokThumb } from '@/lib/embed';
+import { getTextOverrides } from '@/lib/siteTexts';
 import type { Locale, TextOverrides } from '@/lib/i18n/dictionaries';
 
 export const revalidate = 60;
@@ -26,6 +27,12 @@ export default async function HomePage() {
   const textOverrides: TextOverrides = {};
   for (const row of textsRes.data ?? []) {
     (textOverrides[row.locale as Locale] ??= {})[row.key] = row.value;
+  }
+
+  // storage JSON override (관리자 '사이트 문구' / 사이트에서 바로 수정 — 최신 저장 방식, 테이블 값보다 우선)
+  const jsonOverrides = await getTextOverrides();
+  for (const [locale, map] of Object.entries(jsonOverrides)) {
+    textOverrides[locale as Locale] = { ...textOverrides[locale as Locale], ...map };
   }
 
   // 썸네일 미지정 TikTok Reel 은 oEmbed 로 썸네일 자동 보강 (YouTube 는 클라이언트에서 자동 처리)

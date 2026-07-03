@@ -1233,3 +1233,124 @@ img.twemoji {
   height: 1em;
   width: 1em;
 }
+
+/* ─── 사이트에서 바로 수정 (편집 모드, ?edit=1) ─── */
+.trv-edit-spot {
+  position: absolute;
+  z-index: 9000;
+  background: rgba(37, 99, 235, 0.06);
+  border: 1.5px dashed rgba(37, 99, 235, 0.75);
+  border-radius: 6px;
+  cursor: pointer;
+  padding: 0;
+}
+.trv-edit-spot:hover {
+  background: rgba(37, 99, 235, 0.16);
+  border-style: solid;
+}
+.trv-edit-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 9500;
+  background: rgba(15, 23, 42, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.trv-edit-panel {
+  width: min(560px, 100%);
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.35);
+  padding: 20px;
+  display: grid;
+  gap: 12px;
+}
+.trv-edit-panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 15px;
+  color: #0f172a;
+}
+.trv-edit-panel-head code {
+  font-size: 11px;
+  color: #64748b;
+  background: #f1f5f9;
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+.trv-edit-panel textarea {
+  width: 100%;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  padding: 12px;
+  font-size: 15px;
+  line-height: 1.6;
+  font-family: inherit;
+  color: #0f172a;
+  resize: vertical;
+}
+.trv-edit-panel textarea:focus {
+  outline: 2px solid #2563eb;
+  border-color: transparent;
+}
+.trv-edit-panel-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.trv-btn-save {
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 9px 20px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.trv-btn-save:disabled { opacity: 0.6; cursor: default; }
+.trv-btn-ghost {
+  background: #fff;
+  color: #475569;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 9px 14px;
+  font-size: 13px;
+  cursor: pointer;
+}
+.trv-edit-bar {
+  position: fixed;
+  left: 50%;
+  bottom: 20px;
+  transform: translateX(-50%);
+  z-index: 9400;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #0f172a;
+  color: #e2e8f0;
+  border-radius: 999px;
+  padding: 10px 12px 10px 20px;
+  font-size: 13px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+  white-space: nowrap;
+}
+.trv-edit-bar b { color: #fff; }
+.trv-edit-count {
+  margin-left: 10px;
+  font-size: 11px;
+  color: #94a3b8;
+}
+.trv-btn-exit {
+  background: #2563eb;
+  color: #fff;
+  border-radius: 999px;
+  padding: 7px 16px;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+}

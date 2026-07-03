@@ -3,7 +3,6 @@
 import { useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
-import { createClient } from '@/lib/supabase/client';
 import {
   dictionaries,
   flattenDictionary,
@@ -42,13 +41,7 @@ const SECTION_LABELS: Record<string, string> = {
 // dictionary 구조 순서를 그대로 사용 (섹션 → 필드)
 const SECTION_ORDER = Object.keys(dictionaries.ko) as (keyof Dictionary)[];
 
-export default function SiteTextsEditor({
-  initial,
-  tableMissing,
-}: {
-  initial: Row[];
-  tableMissing: boolean;
-}) {
+export default function SiteTextsEditor({ initial }: { initial: Row[] }) {
   const router = useRouter();
   const [locale, setLocale] = useState<Locale>('ko');
   const [saving, setSaving] = useState(false);
@@ -87,59 +80,55 @@ export default function SiteTextsEditor({
 
   const save = async () => {
     setSaving(true);
-    const supabase = createClient();
 
-    const toUpsert: Row[] = [];
-    const toDelete: string[] = [];
+    // 기본값과 다르면 override 저장, 같으면 null(삭제 → 코드 기본값으로 복귀)
+    const entries: Record<string, string | null> = {};
     for (const key of Object.keys(defaults[locale])) {
       const v = values[locale][key] ?? '';
-      if (v !== defaults[locale][key]) toUpsert.push({ locale, key, value: v });
-      else toDelete.push(key); // 기본값과 같으면 override 제거 → 코드 기본값으로 복귀
+      entries[key] = v !== defaults[locale][key] ? v : null;
     }
 
-    if (toUpsert.length) {
-      const { error } = await supabase
-        .from('site_texts')
-        .upsert(toUpsert, { onConflict: 'locale,key' });
-      if (error) {
-        toast.error(`저장 실패: ${error.message}`);
-        setSaving(false);
-        return;
-      }
+    try {
+      const res = await fetch('/api/site-texts', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ locale, entries }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(data.error ?? `저장 실패 (${res.status})`);
+      toast.success(`${LOCALE_LABELS[locale]} 문구가 저장되었습니다. 사이트에는 1분 내 반영됩니다.`);
+      router.refresh();
+    } catch (err: any) {
+      toast.error(err.message ?? '저장 실패');
+    } finally {
+      setSaving(false);
     }
-    if (toDelete.length) {
-      const { error } = await supabase
-        .from('site_texts')
-        .delete()
-        .eq('locale', locale)
-        .in('key', toDelete);
-      if (error) {
-        toast.error(`정리 실패: ${error.message}`);
-        setSaving(false);
-        return;
-      }
-    }
-
-    toast.success(`${LOCALE_LABELS[locale]} 문구가 저장되었습니다.`);
-    setSaving(false);
-    router.refresh();
   };
 
   return (
     <>
-      {tableMissing && (
-        <div
-          className="admin-card"
-          style={{ borderLeft: '4px solid #F59E0B', background: '#FFFBEB' }}
-        >
-          <b>⚠️ site_texts 테이블이 아직 없습니다.</b>
-          <p style={{ marginTop: 8, fontSize: 13, color: '#92400E', lineHeight: 1.6 }}>
-            Supabase → SQL Editor 에서{' '}
-            <code>supabase/migrations/008_site_texts.sql</code> 을 실행하세요. 실행 전에는 편집·저장이
-            동작하지 않습니다.
-          </p>
+      <div className="admin-card" style={{ borderLeft: '4px solid #2563EB' }}>
+        <div style={{ fontSize: 14, fontWeight: 700, marginBottom: 4 }}>
+          ✏️ 사이트에서 바로 수정
         </div>
-      )}
+        <p style={{ fontSize: 13, color: '#64748B', marginBottom: 12 }}>
+          아래 버튼으로 홈페이지를 열면 <b>점선 표시된 문구를 화면에서 직접 클릭해 수정</b>할 수 있습니다.
+        </p>
+        <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
+          {LOCALES.map((l) => (
+            <a
+              key={l}
+              href={`/?edit=1&lang=${l}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="admin-btn admin-btn-secondary"
+              style={{ fontSize: 13, padding: '7px 14px', textDecoration: 'none' }}
+            >
+              {LOCALE_LABELS[l]} ↗
+            </a>
+          ))}
+        </div>
+      </div>
 
       <div
         className="admin-card"
@@ -170,7 +159,7 @@ export default function SiteTextsEditor({
           <span style={{ fontSize: 13, color: '#64748B' }}>
             변경된 항목 <b style={{ color: '#2563EB' }}>{changedCount}</b>개
           </span>
-          <button className="admin-btn" onClick={save} disabled={saving || tableMissing}>
+          <button className="admin-btn" onClick={save} disabled={saving}>
             {saving ? '저장 중...' : `${LOCALE_LABELS[locale]} 저장`}
           </button>
         </div>
@@ -254,7 +243,7 @@ export default function SiteTextsEditor({
       })}
 
       <div className="admin-card" style={{ textAlign: 'right' }}>
-        <button className="admin-btn" onClick={save} disabled={saving || tableMissing}>
+        <button className="admin-btn" onClick={save} disabled={saving}>
           {saving ? '저장 중...' : `${LOCALE_LABELS[locale]} 저장`}
         </button>
       </div>

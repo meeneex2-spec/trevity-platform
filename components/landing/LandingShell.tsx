@@ -11,6 +11,7 @@ import Reels from './Reels';
 import Faq from './Faq';
 import FinalCta from './FinalCta';
 import Footer from './Footer';
+import InlineEditor from './InlineEditor';
 import { LanguageProvider } from '@/lib/i18n/LanguageProvider';
 import type { Locale, TextOverrides } from '@/lib/i18n/dictionaries';
 
@@ -37,6 +38,7 @@ export default function LandingShell({ countries, categories, faqs, reels, ctaUr
       <Faq faqs={faqs} />
       <FinalCta />
       <Footer />
+      <InlineEditor />
     </LanguageProvider>
   );
 }

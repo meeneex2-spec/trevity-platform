@@ -84,7 +84,7 @@ export default function ReelsEditor({ initial }: { initial: Reel[] }) {
     try {
       const stats = await fetchStats(row.link_url);
       if (!stats.views_text && !stats.likes_text) {
-        toast.error('이 링크에서는 통계를 가져올 수 없습니다. (Instagram·사진 게시물은 수동 입력)');
+        toast.error('이 링크에서는 통계를 가져올 수 없습니다. (Instagram 은 수동 입력)');
         return;
       }
       const patch = {
@@ -136,8 +136,8 @@ export default function ReelsEditor({ initial }: { initial: Reel[] }) {
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
           <h3 style={{ fontSize: 16, fontWeight: 700 }}>Reels 목록</h3>
           <span style={{ fontSize: 12, color: '#64748B' }}>
-            💡 YouTube · TikTok 링크는 <b>썸네일 + 조회수·좋아요가 자동 등록</b>됩니다 (저장 시 빈 칸 자동 채움, ↻ 버튼으로 최신값 갱신).
-            Instagram·사진 게시물은 수동 입력해 주세요.
+            💡 YouTube · TikTok 링크(영상·사진 모두)는 <b>썸네일 + 조회수·좋아요가 자동 등록</b>됩니다 (저장 시 빈 칸 자동 채움, ↻ 버튼으로 최신값 갱신).
+            Instagram 은 수동 입력해 주세요.
           </span>
         </div>
         <table className="admin-table">

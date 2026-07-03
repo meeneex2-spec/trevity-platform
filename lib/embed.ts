@@ -27,8 +27,8 @@ export function parseEmbed(url: string | null | undefined): EmbedInfo {
   const ig = url.match(/instagram\.com\/(?:p|reel|tv)\/([A-Za-z0-9_-]+)/);
   if (ig) return { type: 'instagram', embedUrl: `https://www.instagram.com/p/${ig[1]}/embed/?cr=1&v=14`, thumbUrl: null };
 
-  // TikTok
-  const tt = url.match(/tiktok\.com\/(?:@[\w.\-]+\/video\/|embed\/v2\/|v\/)(\d+)/);
+  // TikTok (영상 video / 사진 photo 게시물 모두)
+  const tt = url.match(/tiktok\.com\/(?:@[\w.\-]+\/(?:video|photo)\/|embed\/v2\/|v\/)(\d+)/);
   if (tt) return { type: 'tiktok', embedUrl: `https://www.tiktok.com/embed/v2/${tt[1]}`, thumbUrl: null };
 
   return { type: 'other', embedUrl: null, thumbUrl: null };
@@ -40,8 +40,9 @@ export function parseEmbed(url: string | null | undefined): EmbedInfo {
  */
 export async function fetchTikTokThumb(url: string | null | undefined): Promise<string | null> {
   if (!url || !/tiktok\.com/.test(url)) return null;
-  // 추적 쿼리스트링 제거 (oEmbed 가 원본 URL 만 인식). 사진 게시물(/photo/)은 미지원 → 실패 시 null.
-  const clean = url.split('?')[0];
+  // 추적 쿼리스트링 제거 (oEmbed 가 원본 URL 만 인식).
+  // 사진 게시물(/photo/)은 oEmbed 가 400 을 주지만 /video/ 로 바꿔 부르면 동작한다.
+  const clean = url.split('?')[0].replace('/photo/', '/video/');
   try {
     const res = await fetch(`https://www.tiktok.com/oembed?url=${encodeURIComponent(clean)}`, {
       next: { revalidate: 3600 },

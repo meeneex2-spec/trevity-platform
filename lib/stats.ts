@@ -56,17 +56,33 @@ async function youtubeStats(videoId: string): Promise<ReelStats> {
   return { views: m ? Number(m[1]) : null, likes: null };
 }
 
-async function tiktokStats(url: string): Promise<ReelStats> {
-  const html = await fetchText(url.split('?')[0]);
-  if (!html) return { views: null, likes: null };
-  // 해당 게시물의 stats 블록 (첫 번째)
-  const block = html.match(/"stats"\s*:\s*\{[^{}]*\}/)?.[0] ?? html;
-  const play = block.match(/"playCount"\s*:\s*(\d+)/);
-  const digg = block.match(/"diggCount"\s*:\s*(\d+)/);
+function parseTikTokCounts(html: string): ReelStats {
+  // 페이지 종류에 따라 "stats":{...} 블록 또는 평면 필드로 나옴 — 첫 등장 값이 해당 게시물
+  const scope = html.match(/"stats"\s*:\s*\{[^{}]*\}/)?.[0] ?? html;
+  const play = scope.match(/"playCount"\s*:\s*"?(\d+)"?/);
+  const digg = scope.match(/"diggCount"\s*:\s*"?(\d+)"?/);
   return {
     views: play ? Number(play[1]) : null,
     likes: digg ? Number(digg[1]) : null,
   };
+}
+
+async function tiktokStats(url: string): Promise<ReelStats> {
+  const id = url.match(/(?:\/(?:video|photo)\/|embed\/v2\/|\/v\/)(\d+)/)?.[1];
+
+  // 1차: 임베드 페이지 — 봇 차단이 없어 사진(photo) 게시물 통계까지 나옴
+  if (id) {
+    const embedHtml = await fetchText(`https://www.tiktok.com/embed/v2/${id}`);
+    if (embedHtml) {
+      const stats = parseTikTokCounts(embedHtml);
+      if (stats.views != null || stats.likes != null) return stats;
+    }
+  }
+
+  // 2차: 게시물 페이지 직접 파싱
+  const html = await fetchText(url.split('?')[0]);
+  if (!html) return { views: null, likes: null };
+  return parseTikTokCounts(html);
 }
 
 export async function fetchReelStats(url: string): Promise<ReelStats> {

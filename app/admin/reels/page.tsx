@@ -5,6 +5,9 @@ export const dynamic = 'force-dynamic';
 
 export default async function ReelsPage() {
   const supabase = createClient();
-  const { data } = await supabase.from('reels').select('*').order('sort_order');
-  return <ReelsEditor initial={data ?? []} />;
+  const [reelsRes, countriesRes] = await Promise.all([
+    supabase.from('reels').select('*').order('sort_order'),
+    supabase.from('countries').select('flag, name_ko').order('sort_order'),
+  ]);
+  return <ReelsEditor initial={reelsRes.data ?? []} countries={countriesRes.data ?? []} />;
 }

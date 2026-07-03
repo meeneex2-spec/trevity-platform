@@ -17,6 +17,17 @@ type Reel = {
   is_active: boolean;
 };
 
+type CountryOpt = { flag: string; name_ko: string };
+
+/** location("🇻🇳 Hochiminh") → 국기 + 도시명 분리 */
+function splitLocation(loc: string | null | undefined): { flag: string; city: string } {
+  const m = (loc ?? '').match(/^(\uD83C[\uDDE6-\uDDFF]\uD83C[\uDDE6-\uDDFF])\s*(.*)$/);
+  return m ? { flag: m[1], city: m[2] } : { flag: '', city: (loc ?? '').trim() };
+}
+
+/** 국기 + 도시명 → location 문자열 */
+const joinLocation = (flag: string, city: string) => `${flag} ${city}`.trim();
+
 /** 영상 링크에서 조회수·좋아요 자동 조회 (YouTube/TikTok — 실패 시 null) */
 async function fetchStats(url: string): Promise<{ views_text: string | null; likes_text: string | null }> {
   try {
@@ -29,7 +40,7 @@ async function fetchStats(url: string): Promise<{ views_text: string | null; lik
   }
 }
 
-export default function ReelsEditor({ initial }: { initial: Reel[] }) {
+export default function ReelsEditor({ initial, countries }: { initial: Reel[]; countries: CountryOpt[] }) {
   const router = useRouter();
   const [rows, setRows] = useState<Reel[]>(initial);
   const [statsLoading, setStatsLoading] = useState<number | null>(null);
@@ -150,7 +161,36 @@ export default function ReelsEditor({ initial }: { initial: Reel[] }) {
                   {r.thumb_url ? <img src={r.thumb_url} style={{ width: 60, height: 40, objectFit: 'cover', borderRadius: 4 }} alt="" /> : <span style={{ color: '#94A3B8' }}>—</span>}
                   <input type="file" accept="image/*" onChange={(e) => e.target.files?.[0] && handleUpload(r.id, e.target.files[0])} style={{ fontSize: 10, width: 80 }} />
                 </td>
-                <td><input className="admin-input" value={r.location} onChange={(e) => update(r.id, { location: e.target.value })} /></td>
+                <td>
+                  {(() => {
+                    const { flag, city } = splitLocation(r.location);
+                    return (
+                      <div style={{ display: 'flex', gap: 4 }}>
+                        <select
+                          className="admin-input"
+                          style={{ width: 110, flex: 'none' }}
+                          value={flag}
+                          onChange={(e) => update(r.id, { location: joinLocation(e.target.value, city) })}
+                        >
+                          <option value="">국가 선택</option>
+                          {flag && !countries.some((c) => c.flag === flag) && (
+                            <option value={flag}>{flag} (기존값)</option>
+                          )}
+                          {countries.map((c, i) => (
+                            <option key={`${c.flag}-${i}`} value={c.flag}>{c.flag} {c.name_ko}</option>
+                          ))}
+                        </select>
+                        <input
+                          className="admin-input"
+                          style={{ minWidth: 90 }}
+                          value={city}
+                          placeholder="도시명"
+                          onChange={(e) => update(r.id, { location: joinLocation(flag, e.target.value) })}
+                        />
+                      </div>
+                    );
+                  })()}
+                </td>
                 <td><input className="admin-input" style={{ width: 80 }} value={r.views_text ?? ''} onChange={(e) => update(r.id, { views_text: e.target.value })} /></td>
                 <td><input className="admin-input" style={{ width: 80 }} value={r.likes_text ?? ''} onChange={(e) => update(r.id, { likes_text: e.target.value })} /></td>
                 <td><input className="admin-input" value={r.link_url ?? ''} onChange={(e) => update(r.id, { link_url: e.target.value })} placeholder="YouTube / Instagram / TikTok URL" /></td>
@@ -181,7 +221,25 @@ export default function ReelsEditor({ initial }: { initial: Reel[] }) {
         <div style={{ display: 'grid', gridTemplateColumns: '60px 200px 1fr 100px 100px 1fr 100px', gap: 8, alignItems: 'center' }}>
           <input className="admin-input" type="number" placeholder="순서" value={newRow.sort_order} onChange={(e) => setNewRow({ ...newRow, sort_order: Number(e.target.value) })} />
           <input type="file" accept="image/*" onChange={(e) => e.target.files?.[0] && handleUpload('new', e.target.files[0])} />
-          <input className="admin-input" placeholder="🇰🇷 Seoul" value={newRow.location} onChange={(e) => setNewRow({ ...newRow, location: e.target.value })} />
+          <div style={{ display: 'flex', gap: 4 }}>
+            <select
+              className="admin-input"
+              style={{ width: 110, flex: 'none' }}
+              value={splitLocation(newRow.location).flag}
+              onChange={(e) => setNewRow({ ...newRow, location: joinLocation(e.target.value, splitLocation(newRow.location).city) })}
+            >
+              <option value="">국가 선택</option>
+              {countries.map((c, i) => (
+                <option key={`${c.flag}-${i}`} value={c.flag}>{c.flag} {c.name_ko}</option>
+              ))}
+            </select>
+            <input
+              className="admin-input"
+              placeholder="도시명 (예: Seoul)"
+              value={splitLocation(newRow.location).city}
+              onChange={(e) => setNewRow({ ...newRow, location: joinLocation(splitLocation(newRow.location).flag, e.target.value) })}
+            />
+          </div>
           <input className="admin-input" placeholder="조회수" value={newRow.views_text} onChange={(e) => setNewRow({ ...newRow, views_text: e.target.value })} />
           <input className="admin-input" placeholder="좋아요" value={newRow.likes_text} onChange={(e) => setNewRow({ ...newRow, likes_text: e.target.value })} />
           <input className="admin-input" placeholder="영상 URL (YouTube/Instagram/TikTok)" value={newRow.link_url} onChange={(e) => setNewRow({ ...newRow, link_url: e.target.value })} />

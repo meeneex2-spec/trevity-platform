@@ -185,7 +185,7 @@ body {
   align-items: center;
   overflow: hidden;
   padding-top: 80px;
-  background: linear-gradient(135deg, #8a2439 0%, #FA6781 55%, #ffa7b6 100%);   /* 어두운 로즈 → #FA6781 → 밝은 핑크 */
+  background: linear-gradient(135deg, #f25672 0%, #FA6781 45%, #ffc3cd 100%);   /* 밝은 로즈 → #FA6781 → 연핑크 */
 }
 .hero-glow-right {
   position: absolute;

@@ -25,7 +25,10 @@ export type Dictionary = {
     f3Title: string; f3Desc: string; f4Title: string; f4Desc: string;
   };
   regions: { label: string; title1: string; title2: string; desc: string };
-  campaigns: { label: string; title1: string; title2: string };
+  campaigns: {
+    label: string; title1: string; title2: string;
+    filterAll: string; filterPlace: string; filterProduct: string;
+  };
   how: {
     label: string; title1: string; title2: string;
     s1Title: string; s1Desc: string; s2Title: string; s2Desc: string;
@@ -84,7 +87,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
     hero: {
       badge: '✨  글로벌 크리에이터 플랫폼',
       title1: '트렌드를 경험하고,', title2: '콘텐츠 만들고,', title3: '성장하세요',
-      desc: '트래비티는 글로벌 브랜드와 인플루언서를 연결하는 트렌드 체험 플랫폼입니다. 호텔·맛집·액티비티 같은 여행 체험부터 신제품 뷰티·F&B·테크까지, 지금 뜨는 캠페인을 경험하고 콘텐츠를 만들어보세요.',
+      desc: '트래비티는 글로벌 브랜드와 인플루언서를 연결하는 트렌드 체험 플랫폼입니다. 호텔·맛집·팝업 같은 플레이스 체험부터 뷰티·F&B·테크 신제품 프로덕트 체험까지, 지금 뜨는 캠페인을 경험하고 콘텐츠를 만들어보세요.',
       ctaPrimary: '인플루언서 시작하기 →', ctaSecondary: '캠페인 둘러보기',
       regions: '한국 · 베트남 · 일본 · 태국 · 대만 · 홍콩 · 싱가포르',
       scrollHint: 'SCROLL',
@@ -106,6 +109,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
     },
     campaigns: {
       label: 'CAMPAIGNS', title1: '다양한 트렌드', title2: '캠페인을 경험해보세요',
+      filterAll: '전체', filterPlace: '플레이스', filterProduct: '프로덕트',
     },
     how: {
       label: 'HOW IT WORKS', title1: '쉽고 빠르게', title2: '시작하세요',
@@ -144,7 +148,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
     hero: {
       badge: '✨  Global Creator Platform',
       title1: 'Experience trends,', title2: 'create content,', title3: 'grow your influence',
-      desc: 'Trevity connects global brands with influencers through trending experiences — from hotels, restaurants and travel hotspots to new beauty, F&B and tech product drops.',
+      desc: 'Trevity connects global brands with influencers through trending experiences — Places like hotels, restaurants and pop-ups, and Products like new beauty, F&B and tech drops.',
       ctaPrimary: 'Start as Influencer →', ctaSecondary: 'Explore Campaigns',
       regions: 'Korea · Vietnam · Japan · Thailand · Taiwan · Hong Kong · Singapore',
       scrollHint: 'SCROLL',
@@ -166,6 +170,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
     },
     campaigns: {
       label: 'CAMPAIGNS', title1: 'Discover trending', title2: 'campaigns & experiences',
+      filterAll: 'All', filterPlace: 'Places', filterProduct: 'Products',
     },
     how: {
       label: 'HOW IT WORKS', title1: 'Simple, fast', title2: 'to get started',
@@ -204,7 +209,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
     hero: {
       badge: '✨  グローバル・クリエイタープラットフォーム',
       title1: 'トレンドを体験し、', title2: 'コンテンツを作り、', title3: '成長しよう',
-      desc: 'Trevityはグローバルブランドとインフルエンサーをつなぐトレンド体験プラットフォームです。ホテルやグルメなどの旅行体験から、新作コスメ・フード・ガジェットの製品体験まで、話題のキャンペーンでコンテンツを制作できます。',
+      desc: 'Trevityはグローバルブランドとインフルエンサーをつなぐトレンド体験プラットフォームです。ホテルやグルメなどのプレイス体験から、新作コスメ・フード・ガジェットのプロダクト体験まで、話題のキャンペーンでコンテンツを制作できます。',
       ctaPrimary: 'インフルエンサー登録 →', ctaSecondary: 'キャンペーンを見る',
       regions: '韓国 · ベトナム · 日本 · タイ · 台湾 · 香港 · シンガポール',
       scrollHint: 'SCROLL',
@@ -226,6 +231,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
     },
     campaigns: {
       label: 'CAMPAIGNS', title1: '多彩なトレンドキャンペーン', title2: 'を体験しよう',
+      filterAll: 'すべて', filterPlace: 'プレイス', filterProduct: 'プロダクト',
     },
     how: {
       label: 'HOW IT WORKS', title1: '簡単・スピーディに', title2: 'スタート',
@@ -264,7 +270,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
     hero: {
       badge: '✨  全球创作者平台',
       title1: '体验潮流，', title2: '创作内容，', title3: '与品牌携手发展',
-      desc: 'Trevity 是连接全球品牌与达人的潮流体验平台，覆盖酒店、餐饮、旅行热点，以及美妆、食品、数码等新品体验。于潮流之中萃取灵感，创作精品内容。',
+      desc: 'Trevity 是连接全球品牌与达人的潮流体验平台，覆盖酒店、餐饮、快闪店等空间体验，以及美妆、食品、数码等新品体验。于潮流之中萃取灵感，创作精品内容。',
       ctaPrimary: '成为达人 →', ctaSecondary: '浏览活动',
       regions: '韩国 · 越南 · 日本 · 泰国 · 台湾 · 香港 · 新加坡',
       scrollHint: 'SCROLL',
@@ -286,6 +292,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
     },
     campaigns: {
       label: 'CAMPAIGNS', title1: '体验丰富多样的', title2: '潮流活动',
+      filterAll: '全部', filterPlace: '空间体验', filterProduct: '产品体验',
     },
     how: {
       label: 'HOW IT WORKS', title1: '简单入驻，', title2: '立刻参与',
@@ -346,6 +353,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
     },
     campaigns: {
       label: 'CAMPAIGNS', title1: 'Khám phá nhiều', title2: 'chiến dịch xu hướng',
+      filterAll: 'Tất cả', filterPlace: 'Địa điểm', filterProduct: 'Sản phẩm',
     },
     how: {
       label: 'HOW IT WORKS', title1: 'Đơn giản,\nnhanh chóng\ncùng Trevity', title2: '',
@@ -406,6 +414,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
     },
     campaigns: {
       label: 'CAMPAIGNS', title1: 'สัมผัสแคมเปญเทรนด์', title2: 'หลากหลายรูปแบบ',
+      filterAll: 'ทั้งหมด', filterPlace: 'สถานที่', filterProduct: 'สินค้า',
     },
     how: {
       label: 'HOW IT WORKS', title1: 'ง่ายและรวดเร็ว', title2: 'พร้อมเริ่มทันที',
@@ -470,6 +479,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
     campaigns: {
       label: 'CAMPAIGNS',
       title1: 'စုံလင်လှတဲ့ Trend Campaign တွေကို\nတွေ့ကြုံခံစားနိုင်ပါသည်။', title2: '',
+      filterAll: 'အားလုံး', filterPlace: 'Place', filterProduct: 'Product',
     },
     how: {
       label: 'HOW IT WORKS',

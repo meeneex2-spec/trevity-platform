@@ -100,12 +100,12 @@ body {
 .nav-links a:hover { color: var(--text-dark); }
 .nav-cta {
   background: #FFFFFF;                 /* 흰 바탕 */
-  color: #a23ad1;                      /* 보라 글씨 */
+  color: #FA6781;                      /* 브랜드 코럴핑크 글씨 */
   font-size: 14px;
   font-weight: 700;
   padding: 10px 22px;
   border-radius: 999px;                /* 알약 모양 */
-  border: 2px solid #a23ad1;           /* 보라 보더 */
+  border: 2px solid #FA6781;           /* 브랜드 코럴핑크 보더 */
   cursor: pointer;
   text-decoration: none;
   transition: background 0.2s, color 0.2s, transform 0.15s;
@@ -114,7 +114,7 @@ body {
   margin-left: 16px;
 }
 .nav-cta:hover {
-  background: #a23ad1;
+  background: #FA6781;
   color: #FFFFFF;
   transform: translateY(-1px);
 }
@@ -185,7 +185,7 @@ body {
   align-items: center;
   overflow: hidden;
   padding-top: 80px;
-  background: linear-gradient(135deg, #4a1764 0%, #a23ad1 55%, #d875e7 100%);   /* 어두운 보라 → #a23ad1 → 밝은 보라 */
+  background: linear-gradient(135deg, #8a2439 0%, #FA6781 55%, #ffa7b6 100%);   /* 어두운 로즈 → #FA6781 → 밝은 핑크 */
 }
 .hero-glow-right {
   position: absolute;

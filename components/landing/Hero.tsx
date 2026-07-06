@@ -51,6 +51,7 @@ export default function Hero() {
                 </span>
               </div>
               <img src="/hero/main.png" alt="트래비티 앱 캠페인 목록 화면" className="phone-screen-img" />
+              <div className="phone-homebar" />
             </div>
             <div className="phone-island" />
           </div>
@@ -70,6 +71,7 @@ export default function Hero() {
                 </span>
               </div>
               <img src="/hero/small.png" alt="트래비티 앱 캠페인 상세 화면" className="phone-screen-img" />
+              <div className="phone-homebar" />
             </div>
             <div className="phone-island" />
           </div>

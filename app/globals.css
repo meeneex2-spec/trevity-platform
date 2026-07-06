@@ -349,12 +349,41 @@ body {
   position: absolute;
   top: 80px; left: 80px;
   width: 264px; height: 536px;
-  background: #0B0F17;                       /* 베젤 */
+  background: linear-gradient(145deg, #2a3040 0%, #0B0F17 28%, #0B0F17 72%, #232936 100%); /* 티타늄 프레임 */
   border-radius: 46px;
   padding: 8px;
   box-shadow:
     0 30px 80px rgba(0,0,0,0.4),
-    inset 0 0 0 2px rgba(255,255,255,0.08);  /* 메탈 프레임 하이라이트 */
+    inset 0 0 0 2px rgba(255,255,255,0.14);  /* 메탈 프레임 하이라이트 */
+}
+/* 측면 버튼: 왼쪽 볼륨 2개(::before + box-shadow), 오른쪽 전원(::after) */
+.phone-main::before {
+  content: '';
+  position: absolute;
+  left: -3px; top: 130px;
+  width: 3px; height: 30px;
+  background: #232936;
+  border-radius: 2px 0 0 2px;
+  box-shadow: 0 44px 0 #232936;
+}
+.phone-main::after {
+  content: '';
+  position: absolute;
+  right: -3px; top: 170px;
+  width: 3px; height: 52px;
+  background: #232936;
+  border-radius: 0 2px 2px 0;
+}
+/* 하단 홈 인디케이터 */
+.phone-homebar {
+  position: absolute;
+  bottom: 7px; left: 50%;
+  transform: translateX(-50%);
+  width: 38%; height: 4px;
+  background: rgba(15, 23, 42, 0.45);
+  border-radius: 999px;
+  z-index: 3;
+  pointer-events: none;
 }
 /* 실물 폰 화면 (베젤 안쪽) */
 .phone-screen {
@@ -438,13 +467,31 @@ body {
   position: absolute;
   top: 200px; right: 0;
   width: 186px; height: 380px;
-  background: #0B0F17;
+  background: linear-gradient(145deg, #2a3040 0%, #0B0F17 28%, #0B0F17 72%, #232936 100%);
   border-radius: 34px;
   padding: 6px;
   box-shadow:
     0 20px 50px rgba(0,0,0,0.35),
-    inset 0 0 0 2px rgba(255,255,255,0.08);
+    inset 0 0 0 2px rgba(255,255,255,0.14);
 }
+.phone-secondary::before {
+  content: '';
+  position: absolute;
+  left: -2px; top: 92px;
+  width: 2px; height: 22px;
+  background: #232936;
+  border-radius: 2px 0 0 2px;
+  box-shadow: 0 32px 0 #232936;
+}
+.phone-secondary::after {
+  content: '';
+  position: absolute;
+  right: -2px; top: 122px;
+  width: 2px; height: 38px;
+  background: #232936;
+  border-radius: 0 2px 2px 0;
+}
+.phone-secondary .phone-homebar { bottom: 5px; height: 3px; }
 .phone-secondary .phone-screen { border-radius: 28px; }
 .phone-secondary .phone-statusbar { height: 26px; padding: 6px 16px 0; font-size: 10px; }
 .phone-secondary .phone-island { top: 11px; width: 54px; height: 16px; border-radius: 10px; }

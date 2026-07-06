@@ -4,9 +4,9 @@ import TwemojiBoot from '@/components/TwemojiBoot';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Trevity — 글로벌 인플루언서 여행 체험 플랫폼',
+  title: 'Trevity — 글로벌 인플루언서 트렌드 체험 플랫폼',
   description:
-    '트래비티는 글로벌 브랜드와 인플루언서를 연결하는 여행 체험 플랫폼입니다. 호텔, 마사지, 맛집, 액티비티 등 다양한 여행 캠페인을 경험하세요.',
+    '트래비티는 글로벌 브랜드와 인플루언서를 연결하는 트렌드 체험 플랫폼입니다. 호텔·맛집·액티비티 같은 여행 체험부터 신제품 뷰티·F&B·테크까지 다양한 캠페인을 경험하세요.',
 };
 
 export default function RootLayout({

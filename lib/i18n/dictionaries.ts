@@ -105,7 +105,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       desc: '트래비티는 다양한 국가의 브랜드와 인플루언서를 연결하고 있습니다.',
     },
     campaigns: {
-      label: 'CAMPAIGNS', title1: '다양한 트렌드 캠페인을', title2: '경험해보세요',
+      label: 'CAMPAIGNS', title1: '다양한 트렌드', title2: '캠페인을 경험해보세요',
     },
     how: {
       label: 'HOW IT WORKS', title1: '쉽고 빠르게', title2: '시작하세요',

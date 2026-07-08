@@ -11,6 +11,8 @@ type LanguageContextValue = {
   t: Dictionary;
   /** DB 콘텐츠(카테고리/FAQ/릴스) 번역 조회: override 있으면 그 값, 없으면 fallback */
   tr: (key: string, fallback: string) => string;
+  /** locale 별 raw override 맵 (SNS 링크 등 동적 목록 조회용) */
+  overrides: TextOverrides;
   ctaUrl: string;          // 현재 locale 의 CTA URL (없으면 fallback 또는 '#')
   ctaUrls: CtaUrls;        // 전체 매핑 (어드민 변경 후 새로고침 없이 반영하려면 별도 처리 필요)
 };
@@ -103,6 +105,7 @@ export function LanguageProvider({
       const v = textOverrides?.[locale]?.[key];
       return v && v.trim() ? v : fallback;
     },
+    overrides: textOverrides ?? {},
     // DB 값이 없거나 placeholder('#')면 언어별 기본 사이트로
     ctaUrl: (ctaUrls[locale] && ctaUrls[locale] !== '#') ? ctaUrls[locale]! : DEFAULT_CTA_URLS[locale],
     ctaUrls,

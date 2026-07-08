@@ -1442,3 +1442,13 @@ img.twemoji {
   box-shadow: 0 2px 8px rgba(0,0,0,0.12);
   pointer-events: none;
 }
+
+/* 배지/필터 안 twemoji 크기 고정 (아이콘 겹침 방지) */
+.camp-type-badge img.twemoji,
+.camp-filter-btn img.twemoji {
+  height: 1em;
+  width: 1em;
+  vertical-align: -0.125em;
+}
+/* 푸터 로고 이미지 */
+.footer-logo img { height: 26px; width: auto; display: block; }

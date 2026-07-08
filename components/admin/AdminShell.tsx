@@ -21,6 +21,7 @@ const NAV = [
   { section: '운영', items: [
     { label: '문의함',    href: '/admin/inquiries', icon: '✉️' },
     { label: 'CTA 링크', href: '/admin/cta-links', icon: '🔗' },
+    { label: 'SNS 링크', href: '/admin/sns', icon: '📣' },
   ]},
 ];
 
@@ -101,6 +102,7 @@ export default function AdminShell({
             {pathname.startsWith('/admin/reels') && 'Reels 관리'}
             {pathname.startsWith('/admin/inquiries') && '문의함'}
             {pathname.startsWith('/admin/cta-links') && 'CTA 링크'}
+            {pathname.startsWith('/admin/sns') && 'SNS 링크'}
           </div>
           {user && (
             <div className="admin-user-chip">

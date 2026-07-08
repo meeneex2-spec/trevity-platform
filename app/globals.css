@@ -239,8 +239,9 @@ body {
   font-size: 17px;
   line-height: 1.7;
   color: rgba(255,255,255,0.72);
-  max-width: 400px;
+  max-width: 480px;
   margin-bottom: 48px;
+  white-space: pre-line;        /* \n 줄바꿈 인식 */
 }
 .hero-cta-group {
   display: flex;

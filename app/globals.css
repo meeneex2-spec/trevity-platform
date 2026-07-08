@@ -1429,10 +1429,12 @@ img.twemoji {
   color: #fff;
 }
 .camp-card { position: relative; }
-.camp-type-badge {
+/* .camp-card.has-image>* 의 position:relative 보다 우선하도록 구체 선택자 사용 */
+.camp-card .camp-type-badge,
+.camp-card.has-image > .camp-type-badge {
   position: absolute;
   top: 14px; right: 14px;
-  z-index: 2;
+  z-index: 3;
   font-size: 11px;
   font-weight: 700;
   background: rgba(255,255,255,0.92);

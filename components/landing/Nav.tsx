@@ -21,7 +21,9 @@ export default function Nav() {
 
   return (
     <nav className="trv-nav">
-      <Link href="/" className="nav-logo">trevity</Link>
+      <Link href="/" className="nav-logo">
+        <img src="/logo.png" alt="trevity" />
+      </Link>
       <ul className="nav-links">
         <li><a href="#campaigns">{t.nav.campaigns}</a></li>
         <li><a href="#regions">{t.nav.regions}</a></li>

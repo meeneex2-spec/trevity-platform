@@ -80,7 +80,10 @@ body {
   color: var(--text-dark);    /* 검정 (#0F172A) */
   letter-spacing: -0.5px;
   text-decoration: none;
+  display: inline-flex;
+  align-items: center;
 }
+.nav-logo img { height: 30px; width: auto; display: block; }
 .nav-links {
   display: flex;
   align-items: center;

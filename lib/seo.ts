@@ -13,6 +13,15 @@ export const SITE_URL = (
 ).replace(/\/$/, '');
 
 /**
+ * 운영 본진은 trevity.com (PHP/CI4) 이다.
+ * 이 Next.js 배포본(vercel.app 등)은 스테이징이므로 기본 noindex —
+ * 같은 콘텐츠가 두 도메인에서 색인되어 서로 순위를 깎는 것을 막는다.
+ * 이 배포를 본진으로 승격하려면 NEXT_PUBLIC_ALLOW_INDEXING=true 를 설정한다.
+ */
+export const INDEXABLE =
+  process.env.NEXT_PUBLIC_ALLOW_INDEXING === 'true' || SITE_URL === 'https://trevity.com';
+
+/**
  * hreflang 값 — 언어(ISO 639) + 지역(ISO 3166).
  * 주의: 'kr' 은 국가코드라 hreflang 에서 무효. 한국어는 'ko' / 'ko-KR'.
  * en 은 특정 국가에 묶지 않는 글로벌판이라 지역 없이 사용.

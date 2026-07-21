@@ -5,7 +5,7 @@ import LandingShell from '@/components/landing/LandingShell';
 import { fetchTikTokThumb } from '@/lib/embed';
 import { getTextOverrides } from '@/lib/siteTexts';
 import { LOCALES, type Locale, type TextOverrides } from '@/lib/i18n/dictionaries';
-import { SEO, SITE_URL, languageAlternates, organizationSchema } from '@/lib/seo';
+import { INDEXABLE, SEO, SITE_URL, languageAlternates, organizationSchema } from '@/lib/seo';
 
 export const revalidate = 60;
 
@@ -26,6 +26,9 @@ export async function generateMetadata({ params }: { params: { lang: string } })
   return {
     title: seo.title,
     description: seo.description,
+    // 스테이징 배포는 noindex — 본진(trevity.com)과 중복 색인 방지.
+    // crawl 은 허용해야 크롤러가 noindex 를 읽을 수 있으므로 follow 유지.
+    robots: INDEXABLE ? undefined : { index: false, follow: true },
     alternates: {
       canonical: `${SITE_URL}/${lang}`,
       languages: languageAlternates(),

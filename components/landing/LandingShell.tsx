@@ -16,6 +16,7 @@ import { LanguageProvider } from '@/lib/i18n/LanguageProvider';
 import type { Locale, TextOverrides } from '@/lib/i18n/dictionaries';
 
 type Props = {
+  lang: Locale;
   countries: any[];
   categories: any[];
   faqs: any[];
@@ -24,9 +25,9 @@ type Props = {
   textOverrides?: TextOverrides;
 };
 
-export default function LandingShell({ countries, categories, faqs, reels, ctaUrls, textOverrides }: Props) {
+export default function LandingShell({ lang, countries, categories, faqs, reels, ctaUrls, textOverrides }: Props) {
   return (
-    <LanguageProvider ctaUrls={ctaUrls} textOverrides={textOverrides}>
+    <LanguageProvider locale={lang} ctaUrls={ctaUrls} textOverrides={textOverrides}>
       <Nav />
       <Hero />
       <WhatIsTrevity />

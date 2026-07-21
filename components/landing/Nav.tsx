@@ -21,7 +21,7 @@ export default function Nav() {
 
   return (
     <nav className="trv-nav">
-      <Link href="/" className="nav-logo">
+      <Link href={`/${locale}`} className="nav-logo">
         <img src="/logo.png" alt="trevity" />
       </Link>
       <ul className="nav-links">
@@ -45,24 +45,23 @@ export default function Nav() {
             <span style={{ fontWeight: 600, fontSize: 13, textTransform: 'uppercase' }}>{locale}</span>
             <span style={{ fontSize: 10, opacity: 0.6 }}>▾</span>
           </button>
-          {open && (
-            <ul className="lang-dropdown" role="listbox">
-              {LOCALES.map((l) => (
+          {/* 항상 DOM 에 렌더(닫힘 상태는 CSS 로 숨김) — 크롤러가 7개 언어 URL 을 발견할 수 있어야 함 */}
+          <ul className="lang-dropdown" role="listbox" style={open ? undefined : { display: 'none' }}>
+            {LOCALES.map((l) => (
                 <li key={l}>
-                  <button
-                    type="button"
-                    onClick={() => { setLocale(l); setOpen(false); }}
+                  <Link
+                    href={`/${l}`}
+                    hrefLang={l}
+                    onClick={() => setOpen(false)}
                     className={`lang-option ${l === locale ? 'active' : ''}`}
-                    role="option"
-                    aria-selected={l === locale}
+                    aria-current={l === locale ? 'true' : undefined}
                   >
                     <span style={{ fontSize: 18 }}>{LOCALE_META[l].flag}</span>
                     <span>{LOCALE_META[l].native}</span>
-                  </button>
+                  </Link>
                 </li>
               ))}
-            </ul>
-          )}
+          </ul>
         </div>
 
         <a href={ctaUrl} target="_blank" rel="noopener noreferrer" className="nav-cta">

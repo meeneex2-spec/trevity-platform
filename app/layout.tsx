@@ -1,12 +1,14 @@
 import type { Metadata } from 'next';
 import { Toaster } from 'sonner';
 import TwemojiBoot from '@/components/TwemojiBoot';
+import HtmlLang from '@/components/HtmlLang';
+import { SEO, SITE_URL } from '@/lib/seo';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Trevity — 글로벌 인플루언서 트렌드 체험 플랫폼',
-  description:
-    '트래비티는 글로벌 브랜드와 인플루언서를 연결하는 트렌드 체험 플랫폼입니다. 호텔·맛집·액티비티 같은 여행 체험부터 신제품 뷰티·F&B·테크까지 다양한 캠페인을 경험하세요.',
+  metadataBase: new URL(SITE_URL),
+  title: SEO.ko.title,
+  description: SEO.ko.description,
 };
 
 export default function RootLayout({
@@ -14,6 +16,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  // 실제 lang 속성은 각 언어 페이지에서 HtmlLang 이 클라이언트에서 교정한다.
   return (
     <html lang="ko">
       <head>
@@ -25,6 +28,7 @@ export default function RootLayout({
         />
       </head>
       <body>
+        <HtmlLang />
         {children}
         <Toaster position="top-center" richColors />
         <TwemojiBoot />

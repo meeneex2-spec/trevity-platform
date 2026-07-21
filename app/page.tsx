@@ -1,57 +1,14 @@
-import { createClient } from '@/lib/supabase/server';
-import LandingShell from '@/components/landing/LandingShell';
-import { fetchTikTokThumb } from '@/lib/embed';
-import { getTextOverrides } from '@/lib/siteTexts';
-import type { Locale, TextOverrides } from '@/lib/i18n/dictionaries';
+import { headers } from 'next/headers';
+import { redirect } from 'next/navigation';
+import { detectLocale } from '@/lib/seo';
 
-export const revalidate = 60;
+/**
+ * 루트(/)는 방문자 언어를 감지해 /{lang}/ 으로 보낸다.
+ * 실제 콘텐츠는 모두 언어별 URL 에 존재해야 검색엔진·AI 크롤러가 7개 언어를 각각 인식한다.
+ */
+export const dynamic = 'force-dynamic';
 
-export default async function HomePage() {
-  const supabase = createClient();
-
-  const [countriesRes, categoriesRes, faqsRes, reelsRes, ctaRes, textsRes] = await Promise.all([
-    supabase.from('countries').select('*').eq('is_active', true).order('sort_order'),
-    supabase.from('campaign_categories').select('*').order('sort_order'),
-    supabase.from('faqs').select('*').eq('is_active', true).order('sort_order'),
-    supabase.from('reels').select('*').eq('is_active', true).order('sort_order'),
-    supabase.from('cta_links').select('locale, url'),
-    supabase.from('site_texts').select('locale, key, value'),
-  ]);
-
-  const ctaUrls: Partial<Record<Locale, string>> = {};
-  for (const row of ctaRes.data ?? []) {
-    ctaUrls[row.locale as Locale] = row.url;
-  }
-
-  // site_texts 테이블이 아직 없으면 textsRes.data 는 null → override 없이 코드 기본값 사용
-  const textOverrides: TextOverrides = {};
-  for (const row of textsRes.data ?? []) {
-    (textOverrides[row.locale as Locale] ??= {})[row.key] = row.value;
-  }
-
-  // storage JSON override (관리자 '사이트 문구' / 사이트에서 바로 수정 — 최신 저장 방식, 테이블 값보다 우선)
-  const jsonOverrides = await getTextOverrides();
-  for (const [locale, map] of Object.entries(jsonOverrides)) {
-    textOverrides[locale as Locale] = { ...textOverrides[locale as Locale], ...map };
-  }
-
-  // 썸네일 미지정 TikTok Reel 은 oEmbed 로 썸네일 자동 보강 (YouTube 는 클라이언트에서 자동 처리)
-  const reels = await Promise.all(
-    (reelsRes.data ?? []).map(async (r) => {
-      if (r.thumb_url) return r;
-      const thumb = await fetchTikTokThumb(r.link_url);
-      return thumb ? { ...r, thumb_url: thumb } : r;
-    })
-  );
-
-  return (
-    <LandingShell
-      countries={countriesRes.data ?? []}
-      categories={categoriesRes.data ?? []}
-      faqs={faqsRes.data ?? []}
-      reels={reels}
-      ctaUrls={ctaUrls}
-      textOverrides={textOverrides}
-    />
-  );
+export default function RootPage() {
+  const lang = detectLocale(headers().get('accept-language'));
+  redirect(`/${lang}`);
 }

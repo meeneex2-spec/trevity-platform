@@ -1,0 +1,38 @@
+# Trevity
+
+> Trevity is a global influencer trend-experience platform that connects brands with
+> creators. Creators join campaigns to experience places (hotels, restaurants, spas,
+> pop-ups) and products (new beauty, F&B, tech launches), then create social content.
+> Signing up and applying to campaigns is free for creators.
+
+트래비티(Trevity)는 글로벌 브랜드와 인플루언서를 연결하는 트렌드 체험 플랫폼입니다.
+크리에이터는 호텔·맛집·팝업 같은 플레이스 체험과 뷰티·F&B·테크 신제품 프로덕트 체험
+캠페인에 무료로 참여하고, SNS 콘텐츠를 제작합니다.
+
+## Key facts
+
+- Two experience types: **Place** (visit-based) and **Product** (shipped, no travel required)
+- Categories: hotels, massage & spa, restaurants, cafes, beauty, activities,
+  new beauty products, F&B launches, tech & gadgets, pop-ups & exhibitions
+- Countries served: Korea, Vietnam, China, Myanmar, Thailand, Japan, Taiwan,
+  Hong Kong, Singapore, Philippines
+- Platforms creators use: Instagram, TikTok, YouTube
+- Cost to creators: free to join and to apply
+- Foreign nationals can participate
+
+## Language versions
+
+- Korean: https://trevity.com/ko
+- English: https://trevity.com/en
+- Japanese: https://trevity.com/ja
+- Chinese: https://trevity.com/zh
+- Vietnamese: https://trevity.com/vi
+- Thai: https://trevity.com/th
+- Burmese: https://trevity.com/my
+
+## Country services
+
+- Korea: https://kr.trevity.com
+- Vietnam: https://vn.trevity.com
+- China: https://cn.trevity.com
+- Myanmar: https://mm.trevity.com
